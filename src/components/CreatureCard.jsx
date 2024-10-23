@@ -64,7 +64,7 @@ const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
   const imageContainerStyles = {
     width: '100%',
     height: 'auto',
-    maxHeight: '150px', // Adjust height of user-uploaded image
+    maxHeight: '400px', // Adjust height of user-uploaded image
     borderRadius: '10px',
     overflow: 'hidden',
     marginTop: '60px', 
@@ -85,6 +85,7 @@ const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
     alignItems: 'center',
     marginBottom: '10px',
     fontSize: '14px',
+    
     
   };
 
