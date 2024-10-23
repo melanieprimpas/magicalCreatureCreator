@@ -1,22 +1,42 @@
 import PropTypes from 'prop-types';
+import rainforest from '../assets/images/rainforest.jpeg';
+import desert from '../assets/images/desert.PNG';
+import ocean from '../assets/images/ocean.PNG';
+import mountains from '../assets/images/mountain.PNG';
+import plains from '../assets/images/plains.PNG';
 
 // Modern star rendering
 const renderStars = (count) => {
   const stars = [];
   for (let i = 0; i < count; i++) {
     stars.push(
-      <span key={i} style={{ color: '#FFD700', fontSize: '24px', marginRight: '4px' }}>★</span> // Filled modern star
+      <span key={i} style={{ color: '#FFD700', fontSize: '25px', marginRight: '4px' }}>★</span> 
     );
   }
   return stars;
 };
 
+// Map habitats to background images
+const habitatBackgrounds = {
+  rainforest, 
+  desert,         
+  ocean,           
+  mountains,   
+  plains,         
+};
+
 const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
-  // Updated styles for the creature card
+  // Dynamic background image based on the selected habitat
+  const backgroundImage = habitat && habitatBackgrounds[habitat] ? `url(${habitatBackgrounds[habitat]})` : null;
+
+  // Styles for the creature card
   const cardStyles = {
     width: '100%',
     maxWidth: '350px',
-    backgroundColor: '#f0f0f0',
+    height: '500px', // Adjust height for display
+    backgroundImage: backgroundImage, 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     borderRadius: '20px',
     boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
     textAlign: 'center',
@@ -26,26 +46,37 @@ const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
     justifyContent: 'space-between',
     fontFamily: 'Arial, sans-serif',
     margin: '20px',
+    position: 'relative', 
+    color: 'white', 
   };
 
   const headerStyles = {
-    fontSize: '18px',
-    color: '#333',
+    position: 'absolute',
+    top: '10px',
+    left: '10px',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    //backgroundColor: 'rgba(0, 0, 0, 0.6)', // Slightly transparent black background for text readability
+    padding: '5px 10px',
+    borderRadius: '8px',
   };
 
   const imageContainerStyles = {
     width: '100%',
     height: 'auto',
-    maxHeight: '200px',
-    borderRadius: '15px',
+    maxHeight: '150px', // Adjust height of user-uploaded image
+    borderRadius: '10px',
     overflow: 'hidden',
-    marginBottom: '20px',
+    marginTop: '60px', 
   };
 
   const abilitiesStyles = {
-    fontSize: '16px',
-    color: '#333',
+    fontSize: '15px',
     textAlign: 'left',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Make abilities section readable over the background
+    padding: '10px',
+    borderRadius: '10px',
+    color: 'white', // This is the abilities text color - not the actual abilities
   };
 
   const abilityItemStyles = {
@@ -54,16 +85,16 @@ const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
     alignItems: 'center',
     marginBottom: '10px',
     fontSize: '14px',
+    
   };
 
   return (
     <div style={cardStyles}>
       <div style={headerStyles}>
-        <h2>{creatureName}</h2>
-        <p>{habitat ? `Habitat: ${habitat}` : 'No habitat selected'}</p>
+        {creatureName || 'Unknown Creature'}
       </div>
 
-      {/* Creature Image */}
+      {/* Creature Image (user-uploaded) */}
       <div className="creature-image" style={imageContainerStyles}>
         {image ? <img src={image} alt="Creature" style={{ width: '100%', height: 'auto' }} /> : <p>No image uploaded</p>}
       </div>
@@ -92,7 +123,7 @@ const CreatureCard = ({ habitat, creatureName, image, abilities }) => {
 CreatureCard.propTypes = {
   habitat: PropTypes.string.isRequired,
   creatureName: PropTypes.string.isRequired,
-  image: PropTypes.string, // Ensure image is optional but used correctly
+  image: PropTypes.string,
   abilities: PropTypes.shape({
     strength: PropTypes.number.isRequired,
     agility: PropTypes.number.isRequired,
@@ -101,7 +132,7 @@ CreatureCard.propTypes = {
 };
 
 CreatureCard.defaultProps = {
-  image: null, // Default to no image
+  image: null,
 };
 
 export default CreatureCard;
