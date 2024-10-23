@@ -38,23 +38,23 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Align items vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
   min-width: 320px;
   width: 100%;
   min-height: 100vh;
   padding: 20px;
-  box-sizing: border-box; /* Include padding in width/height calculations */
-  background: linear-gradient(135deg, #6e4040, #5a2929); /* Gradient background */
+  box-sizing: border-box; 
+  background: linear-gradient(135deg, #6e4040, #5a2929); 
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  text-align: center; /* Center the header */
-  margin-bottom: 20px; /* Space below header */
-  color: var(--text-color); /* Color consistent with theme */
+  text-align: center; 
+  margin-bottom: 20px; 
+  color: var(--text-color); 
 }
 
 button {
@@ -65,9 +65,9 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: var(--button-bg);
-  color: white; /* Button text color */
+  color: white; 
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for all properties */
+  transition: all 0.3s ease; 
 }
 
 button:hover {
@@ -86,10 +86,10 @@ button:focus-visible {
     background-color: var(--light-bg);
   }
   a:hover {
-    color: #747bff; /* Lighter hover color */
+    color: #747bff; 
   }
   button {
-    background-color: #f9f9f9; /* Light background for buttons */
+    background-color: #f9f9f9; 
   }
 }
 
@@ -98,15 +98,15 @@ button:focus-visible {
   background-color: var(--card-bg);
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth card hover effect */
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
 .creature-card:hover {
-  transform: scale(1.05); /* Enlarge on hover */
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  transform: scale(1.05); 
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); 
 }
 
-/* Add a cool animation for loading */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -117,5 +117,5 @@ button:focus-visible {
 }
 
 body {
-  animation: fadeIn 1s ease-in; /* Fade-in effect for the entire body */
+  animation: fadeIn 1s ease-in; 
 }

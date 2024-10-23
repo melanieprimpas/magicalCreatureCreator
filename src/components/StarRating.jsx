@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 const StarRating = ({ ability, value, onChange }) => {
-  const stars = Array(5).fill(0); // Create an array of 5 elements
+  const stars = Array(5).fill(0); 
 
   return (
     <div className="star-rating">
