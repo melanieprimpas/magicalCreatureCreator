@@ -119,3 +119,19 @@ button:focus-visible {
 body {
   animation: fadeIn 1s ease-in; 
 }
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1em 2em;
+}
+
+.nav-item {
+  padding: 0 0.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
