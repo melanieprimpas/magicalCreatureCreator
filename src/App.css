@@ -1,42 +1,124 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App.css */
+
+/* Updated styles for the form section */
+.form-section {
+  flex: 1; 
+  background: rgba(143, 96, 96, 0.9); /* Semi-transparent white background */
+  border-radius: 20px; /* More rounded edges */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  padding: 30px;
+  width: 500px;
+ 
+  
+}
+
+.form-section:hover {
+  transform: scale(1.02); /* Slightly enlarge the form on hover */
+}
+
+h2 {
+  color: #ffffff; 
   text-align: center;
+  font-size: 2em; /* Larger heading */
+  margin-bottom: 20px; /* Space below heading */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+
+/* Updated styles for the creature card */
+.creature-card {
+  width: 2.5in; /* Increased width for a larger card */
+  height: 3.5in; /* Increased height for more content */
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Cool gradient */
+  border-radius: 20px; /* More rounded edges */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  text-align: center;
+  padding: 15px; /* More padding for better layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Arial', sans-serif;
+  margin-top: 20px; /* Add spacing between form and card */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transformation */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.creature-header {
+  font-size: 16px; /* Larger font size for the header */
+  margin-bottom: 10px; /* Space below the header */
+  font-weight: bold; /* Bold header for emphasis */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.creature-image img {
+  width: 100%;
+  height: auto;
+  max-height: 1.8in; /* Limit image height */
+  border-radius: 15px; /* Rounder corners for images */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for the image */
 }
 
-.card {
-  padding: 2em;
+.creature-abilities {
+  font-size: 14px; /* Increased font size for better readability */
 }
 
-.read-the-docs {
-  color: #888;
+.creature-abilities ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
+.creature-abilities li {
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.8); /* Light background for abilities */
+  padding: 8px;
+  border-radius: 10px; /* Rounder edges */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.creature-abilities li:hover {
+  background: rgba(255, 255, 255, 0.6); /* Slightly darker on hover */
+}
+
+/* Star rating styles */
+.star-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* Space below the rating */
+}
+
+.star-rating span {
+  margin-right: 5px; /* Space between the label and stars */
+}
+
+/* Add to App.css */
+
+/* Styles for the creature card section */
+.creature-card-section {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Center the creature card */
+  margin-top: 20px; /* Space above the card */
+}
+
+/* Style for each ability group (StarRating component) */
+.ability-group {
+  margin-bottom: 20px; /* Space between ability groups */
+}
+
+/* Add this to App.css */
+
+/* Card Hover Effect */
+.creature-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Ability Stars */
+.creature-abilities span {
+  font-size: 24px;
+  margin-right: 4px;
+  color: #000000; /* Gold color for filled stars */
+}
+
+
+

@@ -1,12 +1,23 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Fonts and General Styles */
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --primary-color: #1a1a1a;
+  --accent-color: #646cff;
+  --hover-accent-color: #535bf2;
+  --background-color: #6e4040;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --light-bg: #ffffff;
+  --light-text: #213547;
+  --button-bg: #1a1a1a;
+  --button-hover-bg: #646cff;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  
+  font-family: var(--font-family);
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--text-color);
+  background-color: var(--background-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,54 +26,96 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--hover-accent-color);
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
   min-width: 320px;
+  width: 100%;
   min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width/height calculations */
+  background: linear-gradient(135deg, #6e4040, #5a2929); /* Gradient background */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-align: center; /* Center the header */
+  margin-bottom: 20px; /* Space below header */
+  color: var(--text-color); /* Color consistent with theme */
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
+  color: white; /* Button text color */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
 }
+
 button:hover {
-  border-color: #646cff;
+  background-color: var(--button-hover-bg);
+  border-color: var(--accent-color);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto var(--accent-color);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--light-text);
+    background-color: var(--light-bg);
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Lighter hover color */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light background for buttons */
   }
+}
+
+/* Add card styles */
+.creature-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth card hover effect */
+}
+
+.creature-card:hover {
+  transform: scale(1.05); /* Enlarge on hover */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Add a cool animation for loading */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadeIn 1s ease-in; /* Fade-in effect for the entire body */
 }
