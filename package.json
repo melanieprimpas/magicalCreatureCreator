@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm run start-db\" \"npm run start:client\" \"npm run start:server\"",
+    "start": "concurrently \"npm run start-db\" \"npm run start:client\" ",
     "start-db": "cd server && npm run start",
     "start:client": "cd client && npm run build && npm run dev",
-    "start:server": "npm start --prefix server",
     "install": "cd client && npm i && cd ../server && npm i"
   },
   "dependencies": {
