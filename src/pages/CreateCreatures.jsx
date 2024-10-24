@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import CreatureCard from '../components/CreatureCard'
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; // Import the StarRating component
 import '../App.css'; // Use this file for background styles and app-specific styling
 
@@ -14,6 +15,9 @@ const CreateCreatures = () => {
     agility: 0,
     intelligence: 0,
   });
+  const [isSaved, setIsSaved] = useState(false); // To track save state
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleAbilityChange = (ability, value) => {
     setAbilities({ ...abilities, [ability]: value });
@@ -25,6 +29,44 @@ const CreateCreatures = () => {
     if (file) {
       setImage(URL.createObjectURL(file)); // Creates an accessible URL for the image
     }
+  };
+
+  // Handle save button click and update the saved status
+  const handleSaveCreature = () => {
+    const creatureData = {
+      habitat,
+      creatureName,
+      image,
+      abilities,
+    };
+
+    // Retrieve any existing creatures from localStorage
+    const savedCreatures = JSON.parse(localStorage.getItem('creatures')) || [];
+    
+    // Add the new creature to the saved creatures
+    const updatedCreatures = [...savedCreatures, creatureData];
+
+    // Save the updated creatures array to localStorage
+    localStorage.setItem('creatures', JSON.stringify(updatedCreatures));
+
+    console.log('Creature saved:', creatureData);
+
+    // Set the "Saved" state to true
+    setIsSaved(true);
+  };
+
+  // Handle clearing the form to create a new creature
+  const handleNewCreature = () => {
+    // Reset the form and card states
+    setHabitat('');
+    setCreatureName('');
+    setImage(null);
+    setAbilities({
+      strength: 0,
+      agility: 0,
+      intelligence: 0,
+    });
+    setIsSaved(false); // Reset the saved state
   };
 
   return (
@@ -86,6 +128,29 @@ const CreateCreatures = () => {
               onChange={handleAbilityChange} // Pass the ability change handler
             />
           ))}
+        </div>
+
+        {/* Save Button */}
+        <div className="button-group">
+          <button 
+            className="save-button" 
+            type="button" 
+            onClick={handleSaveCreature}
+            disabled={isSaved} // Disable the button if the creature is saved
+          >
+            {isSaved ? 'Saved' : 'Save Creature'}
+          </button>
+
+          {/* New Button */}
+          {isSaved && (
+            <button 
+              className="new-button" 
+              type="button" 
+              onClick={handleNewCreature}
+            >
+              New Creature
+            </button>
+          )}
         </div>
       </div>
 

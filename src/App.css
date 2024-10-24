@@ -1,6 +1,4 @@
-/* App.css */
 
-/* Updated styles for the form section */
 .form-section {
   flex: 1; 
   background: rgba(143, 96, 96, 0.9);
@@ -24,28 +22,26 @@ h2 {
 }
 
 
-
-/* Updated styles for the creature card */
 .creature-card {
-  width: 2.5in; /* Increased width for a larger card */
-  height: 3.5in; /* Increased height for more content */
-  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Cool gradient */
+  width: 2.5in; 
+  height: 3.5in; 
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); 
   border-radius: 20px; /* More rounded edges */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); 
   text-align: center;
-  padding: 15px; /* More padding for better layout */
+  padding: 15px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Arial', sans-serif;
-  margin-top: 20px; /* Add spacing between form and card */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transformation */
+  margin-top: 20px; 
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
 .creature-header {
-  font-size: 16px; /* Larger font size for the header */
-  margin-bottom: 10px; /* Space below the header */
-  font-weight: bold; /* Bold header for emphasis */
+  font-size: 16px; 
+  margin-bottom: 10px; 
+  font-weight: bold; 
 }
 
 .creature-image img {
@@ -91,8 +87,6 @@ h2 {
   margin-right: 5px;
 }
 
-/* Add to App.css */
-
 /* Styles for the creature card section */
 .creature-card-section {
   flex: 1;
@@ -105,8 +99,6 @@ h2 {
 .ability-group {
   margin-bottom: 20px; 
 }
-
-/* Add this to App.css */
 
 /* Card Hover Effect */
 .creature-card:hover {
@@ -121,5 +113,43 @@ h2 {
   color: #000000; /* Gold color for filled stars */
 }
 
+.saved-creatures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.saved-creature-card {
+  position: relative;
+  overflow: hidden; /* Ensures button doesn't overflow */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.saved-creature-card:hover {
+  transform: scale(1.05); /* Slightly scale the card on hover */
+}
+
+.delete-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s; /* Smooth transition for button visibility */
+}
+
+.saved-creature-card:hover .delete-button {
+  opacity: 1; /* Show button on hover */
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
 
 
