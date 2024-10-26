@@ -1,7 +1,7 @@
 // Enable access to .env variables
 import dotenv from 'dotenv';
 dotenv.config({ path: '../.env', debug: true });
-console.log(import.meta.url)
+//console.log(import.meta.url)
 
 import { Sequelize } from 'sequelize';
 console.log(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD)
