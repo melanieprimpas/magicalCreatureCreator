@@ -34,6 +34,15 @@ Creature.init({
       key: 'id',
     },
   },
+  strength: {
+    type: DataTypes.INTEGER,
+  },
+  intelligence: {
+    type: DataTypes.INTEGER,
+  },
+  agility: {
+    type: DataTypes.INTEGER,
+  },
 }, {
   sequelize,
   modelName: 'Creature',

@@ -3,6 +3,7 @@ import Creature from './models/creature.js';
 import path from 'path';
 import sequelize from './config/connection.js';
 import fetchStory from './routes/api/api.js'
+import routes from './routes/index.js';
 import cors from 'cors';
 
 const app = express();
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('../client/dist'));
 app.use(cors());
-
+app.use('/api', routes)
 // Connect to the database before starting the Express.js server
 sequelize.sync().then(() => {
   console.log(`Connected to database successfully.`);
@@ -22,7 +23,7 @@ sequelize.sync().then(() => {
   });
 });
 
-app.get('/creatures', async (_req, res) => {
+/*app.get('/creatures', async (_req, res) => {
   try {
     const creatures = await Creature.findAll();
     res.json(creatures);
@@ -34,7 +35,7 @@ app.get('/creatures', async (_req, res) => {
 app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
-
+*/
 // Create an API route to generate a story
 app.post('/api/story', async (req, res) => {
   const { creatureName, habitat } = req.body; // Get creature and habitat from the request body
