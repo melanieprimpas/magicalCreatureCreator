@@ -20,18 +20,25 @@ Creature.init({
   image_url: {
     type: DataTypes.TEXT,
   },
-  habitats_id: {
-    type: DataTypes.INTEGER,
+  habitats_name: {
+    type: DataTypes.STRING(40),
     references: {
       model: 'habitats',
-      key: 'id',
+      key: 'name',
     },
   },
-  abilities_id: {
-    type: DataTypes.INTEGER,
+  habitat_image: {
+    type: DataTypes.TEXT,
+    references: {
+      model: 'habitat',
+      key: 'habitat_url'
+    },
+  },
+  abilities_name: {
+    type: DataTypes.STRING(40),
     references: {
       model: 'abilities',
-      key: 'id',
+      key: 'name',
     },
   },
   strength: {
