@@ -60,11 +60,11 @@ const seedDatabase = async () => {
 
     // Seed data for creatures
     const creatures = await Creature.bulkCreate([
-      { name: 'Dragon', description: 'A large and powerful winged reptile.', image_url: 'https://cdn.pixabay.com/photo/2024/05/08/10/08/mountains-8747925_640.jpg', habitats_id: habitats[0].id, abilities_id: abilities[2].id, strength: 5, intelligence: 4, agility: 3 },
-      { name: 'Phoenix', description: 'A mythical bird that regenerates from its ashes.', image_url: 'https://cdn.pixabay.com/photo/2024/04/20/19/38/ai-generated-8709303_1280.png', habitats_id: habitats[1].id, abilities_id: abilities[1].id, strength: 3, intelligence: 5, agility: 4 },
-      { name: 'Mermaid', description: 'A creature with the upper body of a human and the tail of a fish.', image_url: 'https://cdn.pixabay.com/photo/2024/05/22/10/56/ai-generated-8780350_640.png', habitats_id: habitats[2].id, abilities_id: abilities[0].id, strength: 3, intelligence: 3, agility: 5 },
-      { name: 'Unicorn', description: 'A magical horse with a single horn on its forehead.', image_url: 'https://cdn.pixabay.com/photo/2024/04/10/13/40/ai-generated-8688076_640.jpg', habitats_id: habitats[3].id, abilities_id: abilities[6].id, strength: 2, intelligence: 4, agility: 5 },
-      { name: 'Griffin', description: 'A legendary creature with the body of a lion and the head and wings of an eagle.', image_url: 'https://cdn.pixabay.com/photo/2020/01/29/18/56/being-4803333_640.jpg', habitats_id: habitats[4].id, abilities_id: abilities[2].id, strength: 5, intelligence: 4, agility: 3 },
+      { name: 'Dragon', description: 'A large and powerful winged reptile.', image_url: 'https://cdn.pixabay.com/photo/2024/05/08/10/08/mountains-8747925_640.jpg', habitats_name: habitats[0].name, habitat_image: habitats[0].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
+      { name: 'Phoenix', description: 'A mythical bird that regenerates from its ashes.', image_url: 'https://cdn.pixabay.com/photo/2024/04/20/19/38/ai-generated-8709303_1280.png', habitats_name: habitats[1].name, habitat_image: habitats[1].habitat_url, abilities_name: abilities[1].name, strength: 3, intelligence: 5, agility: 4 },
+      { name: 'Mermaid', description: 'A creature with the upper body of a human and the tail of a fish.', image_url: 'https://cdn.pixabay.com/photo/2024/05/22/10/56/ai-generated-8780350_640.png', habitats_name: habitats[2].name, habitat_image: habitats[2].habitat_url, abilities_name: abilities[0].name, strength: 3, intelligence: 3, agility: 5 },
+      { name: 'Unicorn', description: 'A magical horse with a single horn on its forehead.', image_url: 'https://cdn.pixabay.com/photo/2024/04/10/13/40/ai-generated-8688076_640.jpg', habitats_name: habitats[3].name, habitat_image: habitats[3].habitat_url, abilities_name: abilities[6].name, strength: 2, intelligence: 4, agility: 5 },
+      { name: 'Griffin', description: 'A legendary creature with the body of a lion and the head and wings of an eagle.', image_url: 'https://cdn.pixabay.com/photo/2020/01/29/18/56/being-4803333_640.jpg', habitats_name: habitats[4].name, habitat_image: habitats[4].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
     ]);
 
     // Seed data for users
