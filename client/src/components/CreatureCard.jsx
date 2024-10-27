@@ -28,7 +28,7 @@ const habitatBackgrounds = {
   plains: plains,
 };
 
-const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
+const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
   const [flipped, setFlipped] = useState(false);
   const [story, setStory] = useState('');
 

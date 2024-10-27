@@ -25,6 +25,7 @@ Creature.init({
     references: {
       model: 'habitats',
       key: 'id',
+      
     },
   },
   abilities_id: {
