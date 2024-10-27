@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; 
 import '../App.css';
+import { fetchHabitats } from '../utils/fetchHabitats';
 
-const habitats = ['rainforest', 'desert', 'ocean', 'mountains', 'plains'];
+
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
@@ -16,8 +17,17 @@ const CreateCreatures = () => {
     intelligence: 0,
   });
   const [isSaved, setIsSaved] = useState(false);
-
+  const [habitats, setHabitats] = useState([]);
   const navigate = useNavigate();
+
+  // Fetch habitats when the component mounts
+  useEffect(() => {
+    const loadHabitats = async () => {
+      await fetchHabitats(setHabitats)
+    };
+
+    loadHabitats();
+  }, []); 
 
   const handleAbilityChange = (ability, value) => {
     setAbilities({ ...abilities, [ability]: value });
