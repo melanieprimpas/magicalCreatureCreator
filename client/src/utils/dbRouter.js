@@ -17,7 +17,8 @@ export const retrieveCreatures = async () => {
     }
 }
 
-export const retrieveHabitats = async () => {
+export const retrievehabitats = async () => {
+
     try {
         const response = await fetch('http://localhost:3001/api/habitats', {
             headers: {
@@ -34,5 +35,3 @@ export const retrieveHabitats = async () => {
         console.log('Error from data retrieval:', err);
         return [];
     }
-}
-
