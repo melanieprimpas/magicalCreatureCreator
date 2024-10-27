@@ -12,12 +12,14 @@ Habitat.init({
   name: {
     type: DataTypes.STRING(20),
     allowNull: false,
+    unique: true,
   },
   description: {
     type: DataTypes.TEXT,
   },
   habitat_url:  {
     type: DataTypes.TEXT,
+    unique: true,
   }
 
 }, {

@@ -30,7 +30,7 @@ Creature.init({
   habitat_image: {
     type: DataTypes.TEXT,
     references: {
-      model: 'habitat',
+      model: 'habitats',
       key: 'habitat_url'
     },
   },
