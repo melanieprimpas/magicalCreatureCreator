@@ -38,7 +38,7 @@ export const getCreatureByName = async (req, res) => {
 // Get creature by habitat
 export const getCreatureByHabitat = async (req, res) => {
   try {
-    const creature = await Creature.findAll({ where: { habitats_id: req.params.habitat } });
+    const creature = await Creature.findAll({ where: { habitats_name: req.params.habitat } });
     if (!creature) {
       return res.status(404).json({ error: 'Creature not found' });
     }
@@ -50,7 +50,7 @@ export const getCreatureByHabitat = async (req, res) => {
 // Get creature by ability
 export const getCreatureByAbility = async (req, res) => {
   try {
-    const creature = await Creature.findAll({ where: { abilities_id: req.params.ability } });
+    const creature = await Creature.findAll({ where: { abilities_name: req.params.ability } });
     if (!creature) {
       return res.status(404).json({ error: 'Creature not found' });
     }
