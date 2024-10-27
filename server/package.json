@@ -6,13 +6,13 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "sequelize": "^6.6.5",
-    "pg": "^8.6.0",
-    "pg-hstore": "^2.3.3",
-    "dotenv": "^16.4.5",
     "@google-cloud/aiplatform": "^3.31.0",
-    "@google/generative-ai": "^0.21.0"
-    
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.1",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
   }
 }
