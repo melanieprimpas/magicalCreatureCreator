@@ -31,7 +31,7 @@ import {
 import {
   getAllUsers,
   getUserById,
-  //createUser,
+  createUser,
   deleteUser,
 } from '../controllers/userController.js';
 
@@ -69,7 +69,7 @@ router.delete('/abilities/:id', deleteAbility);
 // User routes
 router.get('/users', getAllUsers);
 router.get('/users/:id', getUserById);
-//router.post('/users', createUser);
+router.post('/users', createUser);
 router.delete('/users/:id', deleteUser);
 
 export default router;

@@ -16,6 +16,10 @@ Habitat.init({
   description: {
     type: DataTypes.TEXT,
   },
+  habitat_url:  {
+    type: DataTypes.TEXT,
+  }
+
 }, {
   sequelize,
   modelName: 'Habitat',

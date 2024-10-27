@@ -8,10 +8,10 @@ import UserCreature from './userCreature.js';
 User.belongsToMany(Creature, { through: UserCreature, foreignKey: 'user_id' });
 Creature.belongsToMany(User, { through: UserCreature, foreignKey: 'creature_id' });
 
-Creature.belongsTo(Habitat, { foreignKey: 'habitats_id' });
-Habitat.hasMany(Creature, { foreignKey: 'habitats_id' });
+Creature.belongsTo(Habitat, { foreignKey: 'habitats_name', targetKey: 'name'});
+Habitat.hasMany(Creature, { foreignKey: 'habitat_name', sourceKey: 'name'});
 
-Creature.belongsTo(Ability, { foreignKey: 'abilities_id' });
-Ability.hasMany(Creature, { foreignKey: 'abilities_id' });
+Creature.belongsTo(Ability, { foreignKey: 'abilities_name', targetKey: 'name'});
+Ability.hasMany(Creature, { foreignKey: 'abilities_id', sourceKey: 'name'});
 
 export { User, Habitat, Ability, Creature, UserCreature };

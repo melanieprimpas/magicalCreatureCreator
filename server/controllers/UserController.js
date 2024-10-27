@@ -1,6 +1,6 @@
 import User from '../models/user.js';
-//import bcrypt from 'bcrypt';
-//import { generateToken } from '../utils/auth.js';
+import bcrypt from 'bcrypt';
+import { generateToken } from '../utils/auth.js';
 
 // Get all users
 export const getAllUsers = async (req, res) => {
@@ -26,7 +26,7 @@ export const getUserById = async (req, res) => {
 };
 
 // Create new user
-/*export const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -37,7 +37,7 @@ export const getUserById = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-*/
+
 // Delete user
 export const deleteUser = async (req, res) => {
   try {
