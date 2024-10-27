@@ -7,17 +7,8 @@ import ocean from '../assets/images/ocean.PNG';
 import mountains from '../assets/images/mountain.PNG';
 import plains from '../assets/images/plains.PNG';
 import { generateStory } from '../utils/apiRoute';
-import { fetchHabitats } from '../pages/CreateCreatures';
 
-const habitatBackgrounds = () => {
-  const [habitats, setHabitats] = useState([]);
 
-  useEffect(() => {
-    const loadHabitats = async () => {
-      await fetchHabitats(setHabitats);
-    }
-  }
-}
 // star rating function
 const renderStars = (count) => {
   const stars = [];
