@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import CreatureCard from '../components/CreatureCard';
-import '../App.css'; // Ensure your CSS is imported
+import '../App.css'; 
 
 const SavedCreatures = () => {
   const [savedCreatures, setSavedCreatures] = useState([]);
@@ -14,7 +14,7 @@ const SavedCreatures = () => {
   // Function to handle deleting a creature
   const handleDeleteCreature = (index) => {
     const updatedCreatures = [...savedCreatures];
-    updatedCreatures.splice(index, 1); // Remove the creature at the given index
+    updatedCreatures.splice(index, 1);
 
     // Update localStorage and the state
     localStorage.setItem('creatures', JSON.stringify(updatedCreatures));
@@ -38,7 +38,7 @@ const SavedCreatures = () => {
                 creatureName={creature.creatureName}
                 image={creature.image}
                 abilities={creature.abilities}
-                story={creature.story} // If there's a story, pass it too
+                story={creature.story}
               />
 
               {/* Delete Button */}

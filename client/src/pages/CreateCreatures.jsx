@@ -3,8 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; 
 import '../App.css';
+import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
-const habitats = ['rainforest', 'desert', 'ocean', 'mountains', 'plains'];
+let habitats = [];
+let url = [];
+
+
+retrievehabitats().then(data => {
+     data.forEach(habitat => {
+        habitats.push(habitat.name);
+        url.push(habitat.habitat_url)
+    });
+});
+
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
