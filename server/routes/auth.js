@@ -5,41 +5,6 @@ const authenticateToken = require('../middleware/auth');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
-    const user = await User.create({
-      username,
-      email,
-      password
-    });
-
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
-    );
-
-    res.status(201).json({
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
-        username: user.username
-      }
-    });
-  } catch (error) {
-    console.error('Registration error:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
