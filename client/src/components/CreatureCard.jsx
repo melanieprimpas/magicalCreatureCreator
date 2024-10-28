@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSyncAlt } from 'react-icons/fa'; 
 import rainforest from '../assets/images/rainforest.jpeg';
@@ -6,6 +6,7 @@ import desert from '../assets/images/desert.PNG';
 import ocean from '../assets/images/ocean.PNG';
 import mountains from '../assets/images/mountain.PNG';
 import plains from '../assets/images/plains.PNG';
+import { generateStory } from '../utils/apiRoute';
 
 // star rating function
 const renderStars = (count) => {
@@ -27,10 +28,12 @@ const habitatBackgrounds = {
   plains: plains,
 };
 
-const CreatureCard = ({ habitat, creatureName, image, abilities, story }) => {
+const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
   const [flipped, setFlipped] = useState(false);
+  const [story, setStory] = useState('');
 
   const backgroundImage = habitat && habitatBackgrounds[habitat] ? `url(${habitatBackgrounds[habitat]})` : null;
+  
 
   // Container for both sides of the card
   const cardContainerStyles = {
@@ -137,6 +140,22 @@ const CreatureCard = ({ habitat, creatureName, image, abilities, story }) => {
     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
   };
 
+  useEffect(() => {
+    const fetchStory = async () => {
+      if (creatureName && habitat) {
+       // console.log('Fetching story for:', creatureName, habitat);
+        try {
+          const generatedStory = await generateStory(creatureName, habitat);
+          setStory(generatedStory);
+         // console.log('Generated story:', generatedStory);
+        } catch (error) {
+          console.error('Error generating story:', error);
+        }
+      }
+    }
+    fetchStory();
+  }, [creatureName, habitat]);
+
   return (
     <div style={cardContainerStyles}>
       <div style={cardStyles}>
@@ -231,10 +250,10 @@ CreatureCard.propTypes = {
   }).isRequired,
   story: PropTypes.string, 
 };
-
+/*
 CreatureCard.defaultProps = {
   image: null,
-  story: '', 
-};
+  //story: '', 
+};*/
 
 export default CreatureCard;

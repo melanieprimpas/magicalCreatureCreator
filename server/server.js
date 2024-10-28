@@ -1,6 +1,5 @@
 import express from 'express';
-import Creature from './models/creature.js';
-import path from 'path';
+//import path from 'path';
 import sequelize from './config/connection.js';
 import fetchStory from './routes/api/api.js'
 import routes from './routes/index.js';
@@ -19,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('../client/dist'));
 app.use(cors());
 app.use('/api', routes)
+
 // Connect to the database before starting the Express.js server
 sequelize.sync().then(() => {
   console.log(`Connected to database successfully.`);

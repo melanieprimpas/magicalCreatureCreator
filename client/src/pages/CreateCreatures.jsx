@@ -1,34 +1,35 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import CreatureCard from '../components/CreatureCard';
-import StarRating from '../components/StarRating'; // Import the StarRating component
-import '../App.css'; // Use this file for background styles and app-specific styling
+import StarRating from '../components/StarRating'; 
+import '../App.css';
+import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
-const habitats = ['rainforest', 'desert', 'ocean', 'mountains', 'plains'];
+let habitats = [];
+
+
+retrievehabitats().then(data => {
+     data.forEach(habitat => {
+        habitats.push(habitat.name);
+    });
+});
+
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
   const [creatureName, setCreatureName] = useState('');
-  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(''); // Updated to use a URL instead of file
   const [abilities, setAbilities] = useState({
     strength: 0,
     agility: 0,
     intelligence: 0,
   });
-  const [isSaved, setIsSaved] = useState(false); // To track save state
+  const [isSaved, setIsSaved] = useState(false);
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleAbilityChange = (ability, value) => {
     setAbilities({ ...abilities, [ability]: value });
-  };
-
-  // Handling image upload
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file)); // Creates an accessible URL for the image
-    }
   };
 
   // Handle save button click and update the saved status
@@ -36,7 +37,7 @@ const CreateCreatures = () => {
     const creatureData = {
       habitat,
       creatureName,
-      image,
+      image: imageUrl, // Updated to save the URL
       abilities,
     };
 
@@ -60,13 +61,13 @@ const CreateCreatures = () => {
     // Reset the form and card states
     setHabitat('');
     setCreatureName('');
-    setImage(null);
+    setImageUrl(''); // Clear the URL input
     setAbilities({
       strength: 0,
       agility: 0,
       intelligence: 0,
     });
-    setIsSaved(false); // Reset the saved state
+    setIsSaved(false); 
   };
 
   return (
@@ -105,15 +106,16 @@ const CreateCreatures = () => {
           />
         </div>
 
-        {/* Image Upload */}
+        {/* Image URL Input */}
         <div className="input-group">
-          <label htmlFor="image">Upload Creature Image:</label>
+          <label htmlFor="image-url">Creature Image URL:</label>
           <input 
-            type="file" 
-            id="image" 
-            accept="image/*" 
-            onChange={handleImageUpload} // Updated to handle image uploads
-            className="input-file"
+            type="text" 
+            id="image-url" 
+            placeholder="Enter image URL" 
+            value={imageUrl} 
+            onChange={(e) => setImageUrl(e.target.value)} // Updated to handle URL input
+            className="input-text"
           />
         </div>
 
@@ -158,7 +160,7 @@ const CreateCreatures = () => {
       <CreatureCard 
         habitat={habitat}
         creatureName={creatureName}
-        image={image} // Pass the image URL to the CreatureCard
+        image={imageUrl} // Pass the URL directly to CreatureCard
         abilities={abilities}
       />
     </div>

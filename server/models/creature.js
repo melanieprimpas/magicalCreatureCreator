@@ -20,19 +20,35 @@ Creature.init({
   image_url: {
     type: DataTypes.TEXT,
   },
-  habitats_id: {
-    type: DataTypes.INTEGER,
+  habitats_name: {
+    type: DataTypes.STRING(40),
     references: {
       model: 'habitats',
-      key: 'id',
+      key: 'name',
     },
   },
-  abilities_id: {
-    type: DataTypes.INTEGER,
+  habitat_image: {
+    type: DataTypes.TEXT,
+    references: {
+      model: 'habitats',
+      key: 'habitat_url'
+    },
+  },
+  abilities_name: {
+    type: DataTypes.STRING(40),
     references: {
       model: 'abilities',
-      key: 'id',
+      key: 'name',
     },
+  },
+  strength: {
+    type: DataTypes.INTEGER,
+  },
+  intelligence: {
+    type: DataTypes.INTEGER,
+  },
+  agility: {
+    type: DataTypes.INTEGER,
   },
 }, {
   sequelize,

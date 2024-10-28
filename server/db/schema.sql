@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS magical_creatures_db;
 
+CREATE DATABASE magical_creatures_db;DROP DATABASE IF EXISTS magical_creatures_db;
+
 CREATE DATABASE magical_creatures_db;
 
 \c magical_creatures_db;
