@@ -38,9 +38,9 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
   // Container for both sides of the card
   const cardContainerStyles = {
     width: '100%',
-    maxWidth: '350px',
-    height: '500px',
-    perspective: '1000px',
+    maxWidth: '275px',
+    height: '475px',
+    perspective: '300px',
     margin: '20px',
   };
 
@@ -126,7 +126,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
     padding: '20px',
     borderRadius: '10px',
     color: 'white',
-    fontSize: '16px',
+    fontSize: '13px',
     overflow: 'auto',
     height: '60%', 
     maxHeight: '280px',
