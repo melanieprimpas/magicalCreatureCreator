@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaSyncAlt } from 'react-icons/fa'; 
-import rainforest from '../assets/images/rainforest.jpeg';
-import desert from '../assets/images/desert.PNG';
-import ocean from '../assets/images/ocean.PNG';
-import mountains from '../assets/images/mountain.PNG';
-import plains from '../assets/images/plains.PNG';
+import { FaSyncAlt } from 'react-icons/fa';
 import { generateStory } from '../utils/apiRoute';
+import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
 // star rating function
 const renderStars = (count) => {
@@ -19,21 +15,39 @@ const renderStars = (count) => {
   return stars;
 };
 
-// Map habitats to background images
-const habitatBackgrounds = {
-  rainforest: rainforest,
-  desert: desert,
-  ocean: ocean,
-  mountains: mountains,
-  plains: plains,
-};
 
-const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
+const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
   const [flipped, setFlipped] = useState(false);
   const [story, setStory] = useState('');
+  const [habitatBackgrounds, setHabitatBackgrounds] = useState({});
+  const [habitatsFetched, setHabitatsFetched] = useState(false);
+
 
   const backgroundImage = habitat && habitatBackgrounds[habitat] ? `url(${habitatBackgrounds[habitat]})` : null;
-  
+
+  useEffect(() => {
+    let habitats = [];
+    let urls = [];
+
+
+    retrievehabitats().then(data => {
+      data.forEach(habitat => {
+        habitats.push(habitat.name);
+        urls.push(habitat.habitat_url)
+      });
+
+
+      const backgrounds = {};
+      habitats.forEach((name, index) => {
+        backgrounds[name] = urls[index];
+      });
+
+      //console.log(backgrounds, "line 28");
+      setHabitatBackgrounds(backgrounds);
+      setHabitatsFetched(true); 
+
+    });
+  }, []);
 
   // Container for both sides of the card
   const cardContainerStyles = {
@@ -65,8 +79,8 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
     justifyContent: 'space-between',
     fontFamily: 'Arial, sans-serif',
     color: 'white',
-    padding: '20px', 
-    boxSizing: 'border-box', 
+    padding: '20px',
+    boxSizing: 'border-box',
   };
 
   const cardFrontStyles = {
@@ -96,10 +110,10 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
   const imageContainerStyles = {
     width: '100%',
     height: 'auto',
-    maxHeight: '200px', 
+    maxHeight: '200px',
     borderRadius: '10px',
     overflow: 'hidden',
-    margin: '10px 0', 
+    margin: '10px 0',
   };
 
   const abilitiesStyles = {
@@ -109,7 +123,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
     padding: '10px',
     borderRadius: '10px',
     color: 'white',
-    marginTop: '10px', 
+    marginTop: '10px',
   };
 
   const abilityItemStyles = {
@@ -118,7 +132,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
     alignItems: 'center',
     marginBottom: '10px',
     fontSize: '14px',
-    color: 'white', 
+    color: 'white',
   };
 
   const storyStyles = {
@@ -128,7 +142,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
     color: 'white',
     fontSize: '13px',
     overflow: 'auto',
-    height: '60%', 
+    height: '60%',
     maxHeight: '280px',
     marginTop: '20px',
   };
@@ -143,11 +157,11 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
   useEffect(() => {
     const fetchStory = async () => {
       if (creatureName && habitat) {
-       // console.log('Fetching story for:', creatureName, habitat);
+        // console.log('Fetching story for:', creatureName, habitat);
         try {
           const generatedStory = await generateStory(creatureName, habitat);
           setStory(generatedStory);
-         // console.log('Generated story:', generatedStory);
+          // console.log('Generated story:', generatedStory);
         } catch (error) {
           console.error('Error generating story:', error);
         }
@@ -189,7 +203,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
 
           {/* Switch card icon */}
           <div
-            onClick={() => setFlipped(!flipped)} 
+            onClick={() => setFlipped(!flipped)}
             style={{
               position: 'absolute',
               top: '10px',
@@ -217,7 +231,7 @@ const CreatureCard = ({  habitat, creatureName, image = null, abilities }) => {
 
           {/* Switch card icon */}
           <div
-            onClick={() => setFlipped(!flipped)} 
+            onClick={() => setFlipped(!flipped)}
             style={{
               position: 'absolute',
               top: '10px',
@@ -248,7 +262,7 @@ CreatureCard.propTypes = {
     agility: PropTypes.number.isRequired,
     intelligence: PropTypes.number.isRequired,
   }).isRequired,
-  story: PropTypes.string, 
+  story: PropTypes.string,
 };
 /*
 CreatureCard.defaultProps = {

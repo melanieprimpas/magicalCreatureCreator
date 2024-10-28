@@ -1,6 +1,6 @@
 export const retrieveCreatures = async () => {
     try {
-        const response = await fetch('/api/creatures', {
+        const response = await fetch('http://localhost:3001/api/creatures', {
             headers: {
                 'Content-Type': 'application/json'
             }

@@ -6,11 +6,13 @@ import '../App.css';
 import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
 let habitats = [];
+let url = [];
 
 
 retrievehabitats().then(data => {
      data.forEach(habitat => {
         habitats.push(habitat.name);
+        url.push(habitat.habitat_url)
     });
 });
 
