@@ -3,7 +3,6 @@ import CreatureCard from '../components/CreatureCard';
 import '../App.css'; 
 import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
-
 const BrowseCreatures = () => {
   const [creatures, setCreatures] = useState([]);
   
@@ -35,3 +34,4 @@ const BrowseCreatures = () => {
 };
 
 export default BrowseCreatures;
+
