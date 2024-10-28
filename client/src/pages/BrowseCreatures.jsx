@@ -8,10 +8,11 @@ const BrowseCreatures = () => {
   
   useEffect(() => {
     retrieveCreatures().then(creature=> {
-        console.log(creature); 
+        //console.log(creature, "LInee"); 
         setCreatures(creature);
       
     })
+    //console.log(creature.habitat_image)
   }, [])
 
   return (
@@ -19,7 +20,7 @@ const BrowseCreatures = () => {
       {creatures.map((creature) => (
         <CreatureCard
           key={creature.id}
-          habitat={creature.habitats_image}
+          habitat={creature.habitats_name}
           creatureName={creature.name}
           image={creature.image_url}
           abilities= {{
