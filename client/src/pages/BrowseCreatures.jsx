@@ -1,31 +1,38 @@
-/*import { retrieveCreatures } from "../utils/dbRouter";
-import { useEffect, useState } from "react";
-import CreatureCard from "../components/CreatureCard";
+import { useEffect, useState } from 'react';
+import CreatureCard from '../components/CreatureCard';
+import '../App.css'; 
+import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
-*/
-
-export default function BrowseCreatures() {/*
-    const [creaturesArray, setCreaturesArray] = useState([]);
-    
-
-    useEffect(() => {
-    const retrieveCreatures = async () => {
+const BrowseCreatures = () => {
+  const [creatures, setCreatures] = useState([]);
+  
+  useEffect(() => {
+    retrieveCreatures().then(creature=> {
+        //console.log(creature, "LInee"); 
+        setCreatures(creature);
       
-        try {
-          const data = await retrieveCreatures();
-          setCreatures(data);
-        // console.log('Generated story:', generatedStory);
-        } catch (error) {
-          console.error('Error generating story:', error);
-        }
-      
-    }
-    retrieveCreatures();
-  }, []);
-*/
-    return (
-      <div>
-        <h2>Browse Creatures</h2>
-      </div>
-    );
-  }
+    })
+    //console.log(creature.habitat_image)
+  }, [])
+
+  return (
+    <div className="creature-grid">
+      {creatures.map((creature) => (
+        <CreatureCard
+          key={creature.id}
+          habitat={creature.habitats_name}
+          creatureName={creature.name}
+          image={creature.image_url}
+          abilities= {{
+            strength: creature.strength,
+            intelligence: creature.intelligence,
+            agility: creature.agility,
+          }}
+        />
+      ))}
+    </div>
+  );  
+};
+
+export default BrowseCreatures;
+
