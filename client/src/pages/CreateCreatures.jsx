@@ -61,7 +61,7 @@ const CreateCreatures = () => {
     // Reset the form and card states
     setHabitat('');
     setCreatureName('');
-    setImageUrl(''); // Clear the URL input
+    setImageUrl(''); 
     setAbilities({
       strength: 0,
       agility: 0,
