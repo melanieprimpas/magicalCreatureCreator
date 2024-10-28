@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSyncAlt } from 'react-icons/fa';
-//import rainforest from '../assets/images/rainforest.jpeg';
-//import desert from '../assets/images/desert.PNG';
-//import ocean from '../assets/images/ocean.PNG';
-//import mountains from '../assets/images/mountain.PNG';
-//import plains from '../assets/images/plains.PNG';
 import { generateStory } from '../utils/apiRoute';
 import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
 
@@ -20,15 +15,6 @@ const renderStars = (count) => {
   return stars;
 };
 
-// Map habitats to background images
-/*
-const habitatBackgrounds = {
-  rainforest: rainforest,
-  desert: desert,
-  ocean: ocean,
-  mountains: mountains,
-  plains: plains,
-};*/
 
 const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
   const [flipped, setFlipped] = useState(false);
@@ -61,7 +47,7 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
       setHabitatsFetched(true); 
 
     });
-  }, [habitatsFetched]);
+  }, []);
 
   // Container for both sides of the card
   const cardContainerStyles = {
