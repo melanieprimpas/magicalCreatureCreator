@@ -81,8 +81,6 @@ const CreateCreatures = () => {
       image: imageUrl, 
       abilities,
       additionalAbility: selectedAbility 
-
-
     };
     const creature = {
       name: creatureName,
@@ -148,7 +146,7 @@ const CreateCreatures = () => {
       <div className="form-section">
         <h2>Create Your Creature</h2>
         
-        {/* Habitat Selection */}
+  
         <div className="input-group">
           <label htmlFor="habitat">Select Habitat:</label>
           <select 
@@ -166,7 +164,7 @@ const CreateCreatures = () => {
           </select>
         </div>
 
-        {/* Name Input */}
+  
         <div className="input-group">
           <label htmlFor="name">Creature Name:</label>
           <input
@@ -179,7 +177,7 @@ const CreateCreatures = () => {
           />
         </div>
 
-        {/* Image URL Input */}
+        
         <div className="input-group">
           <label htmlFor="image-url">Creature Image URL:</label>
           <input 
@@ -192,19 +190,19 @@ const CreateCreatures = () => {
           />
         </div>
 
-        {/* Abilities Input */}
+        
         <div className="abilities-input">
           {Object.keys(abilities).map((ability) => (
             <StarRating
               key={ability}
               ability={ability}
               value={abilities[ability]}
-              onChange={handleAbilityChange} // Pass the ability change handler
+              onChange={handleAbilityChange} 
             />
           ))}
         </div>
 
-        {/* Save Button */}
+        
         <div className="button-group">
           <button 
             className="save-button" 
@@ -215,7 +213,7 @@ const CreateCreatures = () => {
             {isSaved ? 'Saved' : 'Save Creature'}
           </button>
 
-          {/* New Button */}
+          
           {isSaved && (
             <button 
               className="new-button" 
@@ -230,6 +228,7 @@ const CreateCreatures = () => {
 
       {/* Display the creature card */}
       <CreatureCard 
+        
         habitat={habitat}
         creatureName={creatureName}
         image={imageUrl} // Pass the URL directly to CreatureCard
