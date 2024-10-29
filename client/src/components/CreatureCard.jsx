@@ -264,6 +264,7 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
 
 // Prop validation
 CreatureCard.propTypes = {
+  //key: PropTypes.number,
   habitat: PropTypes.string.isRequired,
   creatureName: PropTypes.string.isRequired,
   image: PropTypes.string,

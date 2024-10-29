@@ -71,7 +71,6 @@ const CreateCreatures = () => {
   // handleSaveCreature Function
   //-----------------------------------------------------------------------
 
-  const handleSaveCreature = () => {
 
   // Handle save button click and update the saved status
   const handleSaveCreature = async (e) => {
@@ -239,6 +238,7 @@ const CreateCreatures = () => {
       />
     </div>
   );
-};
+}
+
 
 export default CreateCreatures;
