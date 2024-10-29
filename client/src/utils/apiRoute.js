@@ -1,6 +1,6 @@
 export const generateStory = async (creatureName, habitat) => {
     try {
-        const response = await fetch(`http://localhost:3001/api/story`, {
+        const response = await fetch(`/api/story`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
