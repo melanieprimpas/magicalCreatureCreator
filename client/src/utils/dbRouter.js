@@ -36,3 +36,22 @@ export const retrievehabitats = async () => {
         return [];
     }
 }
+
+export const retrieveabilities = async () => {
+    try {
+        const response = await fetch('http://localhost:3001/api/ability', {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            });
+            const data = await response.json();
+        
+            if(!response.ok) {
+            throw new Error('invalid database API response, check network tab!');
+            }
+            return data;
+    } catch (err) {
+        console.log('Error from data retrieval:', err);
+        return [];
+    }
+}

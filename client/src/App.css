@@ -145,12 +145,13 @@ h2 {
 }
 
 .saved-creature-card:hover .delete-button {
-  opacity: 1; /* Show button on hover */
+  opacity: 1; 
 }
 
 .delete-button:hover {
   background-color: darkred;
 }
+
 
 .navbar {
   display: flex;
