@@ -10,6 +10,7 @@ import CreateCreatures from './pages/CreateCreatures.jsx';
 import SavedCreatures from './pages/SavedCreatures.jsx'
 import ErrorPage from './pages/ErrorPage.jsx';
 import Login from './components/Login.jsx';
+import SignUp from './components/SignUp.jsx'
 import { Dashboard } from './components/Dashboard.jsx';
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login/>,
+      },
+      {
+        path: '/signup',
+        element: <SignUp/>,
       },
       {
         path: '/dashboard',

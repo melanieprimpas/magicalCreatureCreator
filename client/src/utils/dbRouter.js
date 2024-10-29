@@ -85,3 +85,21 @@ export const postCreature = async (creature) => {
         console.error('Error posting creature:', error);
     }
 };
+export const postUser = async (user) => {
+    try {
+        const response = await fetch('api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('User added:', data);
+    } catch (error) {
+        console.error('Error posting user:', error);
+    }
+};
