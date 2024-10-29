@@ -138,29 +138,42 @@ h2 {
 }
 
 .input-group {
-  color: rgba(255, 253, 253, 0.87);
+color: rgb(255, 253, 253);
 font-size: 1rem;
 font-weight: 400;
-width: 25%;
+width: 75%;
 height: 35px;
+padding-top: 10px;
+margin-bottom: 10px;
+background-color: transparent;
+border-top: none;
+border-left: none;
+border-right: none;
+}
+
+.input-text {
+color: rgb(255, 253, 253);
+font-size: 1rem;
+font-weight: 400;
+margin-left: 20px;
+height: 10px;
 padding-top: 10px;
 margin-bottom: 20px;
 background-color: transparent;
-border-bottom: white 1px solid;
 border-top: none;
 border-left: none;
 border-right: none;
 }
 
 .input-select {
-  color: rgba(255, 253, 253, 0.87);
+  color: rgb(255, 253, 253);
+  background: rgba(0, 0, 0, 0.388);
+  border: none;
 }
 
 .form-section {
-  
-  background: rgba(60, 190, 95, 0.268);
+  background: rgba(65, 49, 170, 0.268);
   border-radius: 20px; 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); 
   padding: 30px;
   width: 500px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
