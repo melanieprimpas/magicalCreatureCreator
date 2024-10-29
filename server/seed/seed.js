@@ -12,9 +12,8 @@ const seedDatabase = async () => {
 
     // Seed data for habitats
     const habitats = await Habitat.bulkCreate([
-      { name: 'Forest', description: 'A dense forest with tall trees.', habitat_url:'https://magicalcreatures.brightsfw.com/forest.png' },
+      { name: 'Forest', description: 'A dense forest with tall trees.', habitat_url:'https://magicalcreatures.brightsfw.com/rainforest.jpeg' },
       { name: 'Desert', description: 'A hot and dry desert.', habitat_url:'https://magicalcreatures.brightsfw.com/desert.png' },
-      { name: 'Ocean', description: 'A vast and deep ocean.', habitat_url:'https://magicalcreatures.brightsfw.com/ocean.png' },
       { name: 'Mountain', description: 'A tall and rocky mountain.', habitat_url:'https://magicalcreatures.brightsfw.com/mountain.png' },
       { name: 'Cave', description: 'A dark and damp cave.', habitat_url:'https://magicalcreatures.brightsfw.com/cave.jpg' },
       { name: 'Grassland', description: 'A wide and open grassland.', habitat_url:'https://magicalcreatures.brightsfw.com/grassland.jpg' },
@@ -24,13 +23,8 @@ const seedDatabase = async () => {
       { name: 'Island', description: 'A small and isolated island.', habitat_url:'https://magicalcreatures.brightsfw.com/island.jpg' },
       { name: 'Jungle', description: 'A lush and tropical jungle.', habitat_url:'https://magicalcreatures.brightsfw.com/jungle.jpg' },
       { name: 'Savannah', description: 'A dry and grassy savannah.', habitat_url:'https://magicalcreatures.brightsfw.com/savannah.jpg' },
-      { name: 'Urban', description: 'A busy and crowded city.', habitat_url:'https://magicalcreatures.brightsfw.com/urban.jpg' },
-      { name: 'Suburban', description: 'A quiet and peaceful suburb.', habitat_url:'https://magicalcreatures.brightsfw.com/suburban.jpg' },
-      { name: 'Rural', description: 'A calm and serene countryside.', habitat_url:'https://magicalcreatures.brightsfw.com/rural.jpg' },
       { name: 'Underwater', description: 'A mysterious and dark underwater world.', habitat_url:'https://magicalcreatures.brightsfw.com/underwater.jpg' },
-      { name: 'Space', description: 'A vast and empty space.', habitat_url:'https://magicalcreatures.brightsfw.com/space.jpg' },
       { name: 'Sky', description: 'A high and open sky.', habitat_url:'https://magicalcreatures.brightsfw.com/sky.jpg' },
-      { name: 'Dimensional', description: 'A strange and unknown dimension.', habitat_url:'https://magicalcreatures.brightsfw.com/dimensional.jpg' },
     ]);
 
     // Seed data for abilities

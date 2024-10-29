@@ -56,6 +56,11 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
     height: '475px',
     perspective: '300px',
     margin: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    
+  
   };
 
   const cardStyles = {
@@ -65,6 +70,8 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
     transformStyle: 'preserve-3d',
     transition: 'transform 0.8s',
     transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+    
+    
   };
 
   const cardFaceStyles = {
