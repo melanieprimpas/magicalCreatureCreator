@@ -12,6 +12,10 @@ const setAuthToken = (token) => {
   }
 };
 
+export const isLoggedIn = () => {
+  return !!localStorage.getItem('token');
+};
+
 export const login = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/login`, {

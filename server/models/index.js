@@ -1,6 +1,6 @@
 // const sequelize = require('../config/connection');
 import sequelize from '../config/connection.js';
-import User from './user.js';
+import { User } from './user.js';
 import Habitat from './habitat.js';
 import Ability from './ability.js';
 import Creature from './creature.js';
