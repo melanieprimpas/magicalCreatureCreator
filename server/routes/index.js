@@ -35,6 +35,8 @@ import {
   deleteUser,
 } from '../controllers/userController.js';
 
+import authRoute from './auth.js';
+
 const router = express.Router();
 
 // Creature routes
@@ -71,5 +73,8 @@ router.get('/users', getAllUsers);
 router.get('/users/:id', getUserById);
 router.post('/users', createUser);
 router.delete('/users/:id', deleteUser);
+
+
+router.use('/auth', authRoute);
 
 export default router;

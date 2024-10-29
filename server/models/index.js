@@ -1,4 +1,5 @@
-const sequelize = require('../config/connection');
+// const sequelize = require('../config/connection');
+import sequelize from '../config/connection.js';
 import User from './user.js';
 import Habitat from './habitat.js';
 import Ability from './ability.js';
@@ -15,10 +16,10 @@ Object.keys(models).forEach(modelName => {
   }
 });
 
-module.exports = {
-  sequelize,
-  ...models
-};
+// module.exports = {
+//   sequelize,
+//   ...models
+// };
 
 
 // Define associations

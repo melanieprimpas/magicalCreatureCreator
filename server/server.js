@@ -4,10 +4,8 @@ import sequelize from './config/connection.js';
 import fetchStory from './routes/api/api.js'
 import routes from './routes/index.js';
 import cors from 'cors';
-require('dotenv').config();
-const authRoutes = require('./routes/auth');
-
-app.use('/api/auth', authRoutes);
+import { config } from 'dotenv';
+import authRoutes from './routes/auth.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;

@@ -1,14 +1,16 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const { User } = require('../models');
-const authenticateToken = require('../middleware/auth');
+
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import { User } from '../models/user.js';
+import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
   try {
+    console.log('Login request:', req.body);
     const { email, password } = req.body;
-    
+    console.log(email, password);
     const user = await User.findOne({ where: { email } });
     
     if (!user || !(await user.validPassword(password))) {
@@ -52,4 +54,4 @@ router.get('/me', authenticateToken, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
