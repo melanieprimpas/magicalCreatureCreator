@@ -1,38 +1,50 @@
-import { Model, DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/connection.js';
+import bcrypt from 'bcrypt';
 
-class User extends Model {}
-
-User.init({
+const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true
   },
   username: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-    unique: true,
+    type: DataTypes.STRING,
+    allowNull: false
   },
   email: {
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
-  },
+    type: DataTypes.STRING,
+    allowNull: false
+  }
 }, {
-  sequelize: sequelize,
-  modelName: 'User',
-  tableName: 'users',
-  timestamps: false,
+  timestamps: true,
+  hooks: {
+    beforeCreate: async (user) => {
+      if (user.password) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+      }
+    },
+    beforeUpdate: async (user) => {
+      if (user.changed('password')) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+      }
+    }
+  }
 });
 
-export default User;
+User.prototype.validPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+export { User };
+//export default User;
