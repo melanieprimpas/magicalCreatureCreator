@@ -4,9 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MysticMakers</title>
+    <link rel="stylesheet" href="./index.css" />
   </head>
+  
   <body>
-    <div style="width:100%" id="root"></div>
+    <video autoplay muted loop id="starsBackground">
+      <source src="https://magicalcreatures.brightsfw.com/background_stars.mp4" type="video/mp4" />
+    
+  </video>
+    <div style="width:100%; z-index:1000;" id="root"></div>
+  
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
