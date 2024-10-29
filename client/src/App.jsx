@@ -1,25 +1,33 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
+import { AuthContext } from './context/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Login from './components/Login';
+import Nav from './components/Nav';
+import { useContext } from 'react';
+import BrowseCreatures from './pages/BrowseCreatures';
+
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <BrowserRouter>
-      <AuthProvider>
+      
         <Routes>
+          
           <Route path="/login" element={<Login />} />
           <Route 
             path="/dashboard" 
             element={
+              
               <ProtectedRoute>
                 <div>Dashboard (Protected Route)</div>
+                <Nav />
               </ProtectedRoute>
             } 
           />
-          <Route path="/" element={<div>Home Page</div>} />
+          <Route path="/" element={<BrowseCreatures />} />
         </Routes>
-      </AuthProvider>
+      
     </BrowserRouter>
   );
 }
