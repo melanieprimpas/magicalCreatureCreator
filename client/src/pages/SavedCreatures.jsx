@@ -34,6 +34,7 @@ const SavedCreatures = () => {
             <>
               {/* Render the CreatureCard */}
               <CreatureCard
+                key = {creature.id}
                 habitat={creature.habitat}
                 creatureName={creature.creatureName}
                 image={creature.image}
