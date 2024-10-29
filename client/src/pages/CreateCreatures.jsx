@@ -29,7 +29,7 @@ const CreateCreatures = () => {
   });
   const [isSaved, setIsSaved] = useState(false);
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   // Handle habitat selection change
   const handleHabitatChange = (event) => {
