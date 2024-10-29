@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "npx tsc",
     "start": "node server.js",
     "seed": "node seed/seed.js"
   },
