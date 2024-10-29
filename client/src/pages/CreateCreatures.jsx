@@ -42,6 +42,7 @@ retrieveabilities().then(data => {
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
   const [habitatUrl, setHabitatUrl] = useState('');
+  const [nameAbilities, setNameAbilities] = useState('');
   const [creatureName, setCreatureName] = useState('');
   const [imageUrl, setImageUrl] = useState(''); // Updated to use a URL instead of file
   const [abilities, setAbilities] = useState({
@@ -50,7 +51,7 @@ const CreateCreatures = () => {
     intelligence: 0,
   });
 
-  const [selectedAbility, setSelectedAbility] = useState(''); 
+  //const [selectedAbility, setSelectedAbility] = useState(''); 
   const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
@@ -66,6 +67,10 @@ const CreateCreatures = () => {
     setAbilities({ ...abilities, [ability]: value });
   };
 
+  const handleNameAbilityChange = (event) => {
+    const selectedNameAbility = event.target.value;
+    setNameAbilities(selectedNameAbility);
+  };
 
   //-----------------------------------------------------------------------
   // handleSaveCreature Function
@@ -80,7 +85,7 @@ const CreateCreatures = () => {
       creatureName,
       image: imageUrl, 
       abilities,
-      additionalAbility: selectedAbility 
+      nameAbilities
     };
     const creature = {
       name: creatureName,
@@ -88,7 +93,7 @@ const CreateCreatures = () => {
       image_url: imageUrl,
       habitats_name: habitat,
       habitat_image: habitatUrl,
-      abilities_name: 'Invisibility',
+      abilities_name: nameAbilities,
       strength: abilities.strength,
       intelligence: abilities.intelligence,
       agility: abilities.agility
@@ -164,6 +169,22 @@ const CreateCreatures = () => {
           </select>
         </div>
 
+       <div className="input-group">
+          <label htmlFor="nameAbilities">Select Ability:</label>
+          <select 
+            id="nameAbilities" 
+            value={nameAbilities} 
+            onChange={(e) => setNameAbilities(e.target.value)}
+            className="input-select"
+          >
+            <option value="">--Choose Ability--</option>
+            {abilitiesName.map((nameAbilities) => (
+              <option key={nameAbilities} value={nameAbilities}>
+                {nameAbilities.charAt(0).toUpperCase() + nameAbilities.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
   
         <div className="input-group">
           <label htmlFor="name">Creature Name:</label>
@@ -233,7 +254,7 @@ const CreateCreatures = () => {
         creatureName={creatureName}
         image={imageUrl} // Pass the URL directly to CreatureCard
         abilities={abilities}
-        additionalAbility={selectedAbility} 
+        nameAbilities={nameAbilities} 
       />
     </div>
   );

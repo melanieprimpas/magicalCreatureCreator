@@ -23,6 +23,7 @@ const BrowseCreatures = () => {
           habitat={creature.habitats_name}
           creatureName={creature.name}
           image={creature.image_url}
+          nameAbilities={creature.abilities_name}
           abilities= {{
             strength: creature.strength,
             intelligence: creature.intelligence,
