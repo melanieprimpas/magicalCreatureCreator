@@ -12,8 +12,6 @@ const Login = () => {
   const { setUser } = useAuth();
 
   // Get the intended destination from location state, or default to dashboard
-  const from = location.state?.from?.pathname || '/dashboard';
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -21,8 +19,7 @@ const Login = () => {
     try {
       const user = await login(email, password);
       setUser(user);
-      // Navigate to the intended destination
-      navigate(from, { replace: true });
+      navigate('/dashboard', { replace: true });
     } catch (error) {
       setError(error.message || 'Login failed');
       console.error('Login error:', error);
