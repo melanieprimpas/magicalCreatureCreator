@@ -3,29 +3,37 @@ import { useNavigate } from 'react-router-dom';
 import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; 
 import '../App.css';
-import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
+import { retrievehabitats, retrieveCreatures, retrieveabilities } from '../utils/dbRouter';
 
 let habitats = [];
-let url = [];
 
-
+// Fetch habitats from the database and populate habitats array
 retrievehabitats().then(data => {
-     data.forEach(habitat => {
-        habitats.push(habitat.name);
-        url.push(habitat.habitat_url)
-    });
+  data.forEach(habitat => {
+    habitats.push(habitat.name);
+  });
 });
 
+let abilitiesName = [];
+
+// Fetch habitats from the database and populate habitats array
+retrieveabilities().then(data => {
+  data.forEach(abilityName => {
+    abilitiesName.push(abilityName.name);
+  });
+});
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
   const [creatureName, setCreatureName] = useState('');
-  const [imageUrl, setImageUrl] = useState(''); // Updated to use a URL instead of file
+  const [imageUrl, setImageUrl] = useState('');
+  const [abilityName, setAbilityName] = useState('');
   const [abilities, setAbilities] = useState({
     strength: 0,
     agility: 0,
     intelligence: 0,
   });
+  const [selectedAbility, setSelectedAbility] = useState(''); // New dropdown for additional ability selection
   const [isSaved, setIsSaved] = useState(false);
 
   const navigate = useNavigate();
@@ -39,8 +47,9 @@ const CreateCreatures = () => {
     const creatureData = {
       habitat,
       creatureName,
-      image: imageUrl, // Updated to save the URL
+      image: imageUrl,
       abilities,
+      additionalAbility: selectedAbility // Save the selected ability
     };
 
     // Retrieve any existing creatures from localStorage
@@ -60,7 +69,6 @@ const CreateCreatures = () => {
 
   // Handle clearing the form to create a new creature
   const handleNewCreature = () => {
-    // Reset the form and card states
     setHabitat('');
     setCreatureName('');
     setImageUrl(''); 
@@ -69,6 +77,7 @@ const CreateCreatures = () => {
       agility: 0,
       intelligence: 0,
     });
+    setSelectedAbility('');
     setIsSaved(false); 
   };
 
@@ -95,6 +104,24 @@ const CreateCreatures = () => {
           </select>
         </div>
 
+        {/* Ability Selection */}
+        <div className="input-group">
+          <label htmlFor="abilityName">Select Ability:</label>
+          <select 
+            id="abilityName" 
+            value={abilityName} 
+            onChange={(e) => setAbilityName(e.target.value)}
+            className="input-select"
+          >
+            <option value="">--Choose Ability--</option>
+            {abilitiesName.map((abilityName) => (
+              <option key={abilityName} value={abilityName}>
+                {abilityName.charAt(0).toUpperCase() + abilityName.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* Name Input */}
         <div className="input-group">
           <label htmlFor="name">Creature Name:</label>
@@ -116,12 +143,14 @@ const CreateCreatures = () => {
             id="image-url" 
             placeholder="Enter image URL" 
             value={imageUrl} 
-            onChange={(e) => setImageUrl(e.target.value)} // Updated to handle URL input
+            onChange={(e) => setImageUrl(e.target.value)}
             className="input-text"
           />
         </div>
 
-        {/* Abilities Input */}
+      
+
+        {/* Abilities Input (Star Ratings) */}
         <div className="abilities-input">
           <h3>Abilities</h3>
           {Object.keys(abilities).map((ability) => (
@@ -129,7 +158,7 @@ const CreateCreatures = () => {
               key={ability}
               ability={ability}
               value={abilities[ability]}
-              onChange={handleAbilityChange} // Pass the ability change handler
+              onChange={handleAbilityChange}
             />
           ))}
         </div>
@@ -140,7 +169,7 @@ const CreateCreatures = () => {
             className="save-button" 
             type="button" 
             onClick={handleSaveCreature}
-            disabled={isSaved} // Disable the button if the creature is saved
+            disabled={isSaved} 
           >
             {isSaved ? 'Saved' : 'Save Creature'}
           </button>
@@ -162,8 +191,9 @@ const CreateCreatures = () => {
       <CreatureCard 
         habitat={habitat}
         creatureName={creatureName}
-        image={imageUrl} // Pass the URL directly to CreatureCard
+        image={imageUrl}
         abilities={abilities}
+        additionalAbility={selectedAbility} // Display the selected ability in the card if needed
       />
     </div>
   );
