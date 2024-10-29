@@ -8,7 +8,8 @@
     "start:client": "cd client && npm run build && npm run dev",
     "install": "cd client && npm i && cd ../server && npm i",
     "dev": "vite",
-    "seed": "cd server && npm run seed"
+    "seed": "cd server && npm run seed",
+    "render-build": "npm install && npm run seed"
   },
   "dependencies": {
     "@google-cloud/aiplatform": "^3.31.0",
