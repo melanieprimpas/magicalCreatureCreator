@@ -4,6 +4,7 @@ import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; 
 import '../App.css';
 import { retrievehabitats, retrieveCreatures, postCreature, retrieveabilities } from '../utils/dbRouter';
+import '../Login.css';
 
 let habitats = [];
 let urls = [];
@@ -150,8 +151,7 @@ const CreateCreatures = () => {
     <div className="app-container">
       <div className="form-section">
         <h2>Create Your Creature</h2>
-        
-  
+   
         <div className="input-group">
           <label htmlFor="habitat">Select Habitat:</label>
           <select 
