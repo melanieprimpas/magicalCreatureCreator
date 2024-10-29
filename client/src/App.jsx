@@ -17,10 +17,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route 
             path="/dashboard" 
-            element={
-              
+            element={              
               <ProtectedRoute>
-                <div>Dashboard (Protected Route)</div>
                 <Nav />
               </ProtectedRoute>
             } 
