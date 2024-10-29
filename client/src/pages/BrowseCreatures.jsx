@@ -16,7 +16,7 @@ const BrowseCreatures = () => {
   }, [])
 
   return (
-    <div className="creature-grid">
+    <div className="card-container">
       {creatures.map((creature) => (
         <CreatureCard
           key={creature.id}

@@ -7,7 +7,10 @@ import { retrievehabitats, retrieveCreatures, retrieveabilities } from '../utils
 
 let habitats = [];
 
+// --------------------------------------------------------------------
 // Fetch habitats from the database and populate habitats array
+// --------------------------------------------------------------------
+
 retrievehabitats().then(data => {
   data.forEach(habitat => {
     habitats.push(habitat.name);
@@ -16,12 +19,20 @@ retrievehabitats().then(data => {
 
 let abilitiesName = [];
 
-// Fetch habitats from the database and populate habitats array
+// -----------------------------------------------------------------------
+// Fetch abilities from the database and populate abilitiesName array
+// -----------------------------------------------------------------------
+
 retrieveabilities().then(data => {
   data.forEach(abilityName => {
     abilitiesName.push(abilityName.name);
   });
 });
+
+
+// -----------------------------------------------------------------------
+// CreateCreatures Component
+// -----------------------------------------------------------------------
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
@@ -33,7 +44,7 @@ const CreateCreatures = () => {
     agility: 0,
     intelligence: 0,
   });
-  const [selectedAbility, setSelectedAbility] = useState(''); // New dropdown for additional ability selection
+  const [selectedAbility, setSelectedAbility] = useState(''); 
   const [isSaved, setIsSaved] = useState(false);
 
   const navigate = useNavigate();
@@ -42,32 +53,48 @@ const CreateCreatures = () => {
     setAbilities({ ...abilities, [ability]: value });
   };
 
-  // Handle save button click and update the saved status
+  //-----------------------------------------------------------------------
+  // handleSaveCreature Function
+  //-----------------------------------------------------------------------
+
   const handleSaveCreature = () => {
     const creatureData = {
       habitat,
       creatureName,
       image: imageUrl,
       abilities,
-      additionalAbility: selectedAbility // Save the selected ability
+      additionalAbility: selectedAbility 
     };
 
-    // Retrieve any existing creatures from localStorage
+  // -----------------------------------------------------------------------
+  // Retrieve any existing creatures from localStorage
+  // -----------------------------------------------------------------------
+
     const savedCreatures = JSON.parse(localStorage.getItem('creatures')) || [];
     
+
+    //-----------------------------------------------------------------------
     // Add the new creature to the saved creatures
+    //-----------------------------------------------------------------------
+
     const updatedCreatures = [...savedCreatures, creatureData];
 
+    //-----------------------------------------------------------------------
     // Save the updated creatures array to localStorage
+    //-----------------------------------------------------------------------
+
     localStorage.setItem('creatures', JSON.stringify(updatedCreatures));
 
-    console.log('Creature saved:', creatureData);
-
+    //-----------------------------------------------------------------------
     // Set the "Saved" state to true
+    //-----------------------------------------------------------------------
+
     setIsSaved(true);
   };
 
+  //-----------------------------------------------------------------------
   // Handle clearing the form to create a new creature
+  //-----------------------------------------------------------------------
   const handleNewCreature = () => {
     setHabitat('');
     setCreatureName('');
@@ -152,7 +179,6 @@ const CreateCreatures = () => {
 
         {/* Abilities Input (Star Ratings) */}
         <div className="abilities-input">
-          <h3>Abilities</h3>
           {Object.keys(abilities).map((ability) => (
             <StarRating
               key={ability}
@@ -193,7 +219,7 @@ const CreateCreatures = () => {
         creatureName={creatureName}
         image={imageUrl}
         abilities={abilities}
-        additionalAbility={selectedAbility} // Display the selected ability in the card if needed
+        additionalAbility={selectedAbility} 
       />
     </div>
   );

@@ -1,3 +1,7 @@
+//-----------------------------------------------------------------------------------
+// Retrieve Creatures
+//-----------------------------------------------------------------------------------
+
 export const retrieveCreatures = async () => {
     try {
         const response = await fetch('http://localhost:3001/api/creatures', {
@@ -17,6 +21,9 @@ export const retrieveCreatures = async () => {
     }
 }
 
+//-----------------------------------------------------------------------------------
+// Retrieve Habitats
+//-----------------------------------------------------------------------------------
 
 export const retrievehabitats = async () => {
     try {
@@ -36,6 +43,11 @@ export const retrievehabitats = async () => {
         return [];
     }
 }
+
+
+//-----------------------------------------------------------------------------------
+// Retrieve Abilities
+//-----------------------------------------------------------------------------------
 
 export const retrieveabilities = async () => {
     try {

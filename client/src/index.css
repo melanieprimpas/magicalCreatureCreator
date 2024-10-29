@@ -2,14 +2,11 @@
   /* Fonts and General Styles */
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --primary-color: #1a1a1a;
-  --accent-color: #646cff;
-  --hover-accent-color: #535bf2;
   --background-color: #6e4040;
   --text-color: rgba(255, 255, 255, 0.87);
   --light-bg: #ffffff;
   --light-text: #213547;
   --button-bg: #1a1a1a;
-  --button-hover-bg: #646cff;
   --card-bg: rgba(255, 255, 255, 0.9);
   
   font-family: var(--font-family);

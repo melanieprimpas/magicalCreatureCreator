@@ -1,6 +1,13 @@
+.app-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  flex-wrap: wrap;
+}
 
 .form-section {
-  flex: 1; 
+  
   background: rgba(143, 96, 96, 0.9);
   border-radius: 20px; 
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); 
@@ -36,13 +43,11 @@ h2 {
 }
 
 .card-container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh ; 
-  flex-wrap: wrap; 
-  margin-right: 50px;
-  overflow-y:auto;
+  flex-direction: row;
+  justify-content: space-between; 
+  flex-wrap: wrap;
 }
 
 .creature-header {
