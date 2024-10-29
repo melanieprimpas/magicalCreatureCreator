@@ -33,7 +33,9 @@ import {
   getUserById,
   createUser,
   deleteUser,
-} from '../controllers/userController.js';
+} from '../controllers/UserController.js';
+
+import authRoute from './auth.js';
 
 const router = express.Router();
 
@@ -71,5 +73,8 @@ router.get('/users', getAllUsers);
 router.get('/users/:id', getUserById);
 router.post('/users', createUser);
 router.delete('/users/:id', deleteUser);
+
+
+router.use('/auth', authRoute);
 
 export default router;

@@ -8,6 +8,8 @@ import BrowseCreatures from './pages/BrowseCreatures.jsx';
 import CreateCreatures from './pages/CreateCreatures.jsx';
 import SavedCreatures from './pages/SavedCreatures.jsx'
 import ErrorPage from './pages/ErrorPage.jsx';
+import Login from './components/Login.jsx';
+import { Dashboard } from './components/Dashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
         path: '/CreateCreatures',
         element: <CreateCreatures />,
       },
+      {
+        path: '/login',
+        element: <Login/>,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard/>,
+      },
     ],
   },
 ]);
@@ -35,10 +45,3 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
 }
-/*
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-*/

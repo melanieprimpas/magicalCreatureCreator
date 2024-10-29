@@ -124,8 +124,10 @@ export const updateCreature = async (req, res) => {
 // Create new creature
 export const createCreature = async (req, res) => {
   try {
-    const { name, description, image_url, habitats_id, abilities_id } = req.body;
-    const newCreature = await Creature.create({ name, description, image_url, habitats_id, abilities_id, strength, intelligence, agility });
+    console.log(req.body)
+    const { name, description, image_url, habitats_name, habitat_image, abilities_name, strength, intelligence, agility} = req.body;
+    console.log('Destructured')
+    const newCreature = await Creature.create({ name: name, description: description, image_url: image_url, habitats_name: habitats_name, habitat_image: habitat_image, abilities_name: abilities_name, strength: strength, intelligence: intelligence, agility: agility });
     res.status(201).json(newCreature);
   } catch (error) {
     res.status(500).json({ error: error.message });

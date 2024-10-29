@@ -3,8 +3,6 @@ import sequelize from '../config/connection.js';
 
 import bcrypt from 'bcrypt';
 
-
-
 const seedDatabase = async () => {
   try {
     // Sync the database

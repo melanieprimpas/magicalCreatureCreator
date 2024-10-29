@@ -4,7 +4,7 @@
 
 export const retrieveCreatures = async () => {
     try {
-        const response = await fetch('http://localhost:3001/api/creatures', {
+        const response = await fetch('/api/creatures', {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -27,7 +27,7 @@ export const retrieveCreatures = async () => {
 
 export const retrievehabitats = async () => {
     try {
-        const response = await fetch('http://localhost:3001/api/habitats', {
+        const response = await fetch('/api/habitats', {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -51,7 +51,7 @@ export const retrievehabitats = async () => {
 
 export const retrieveabilities = async () => {
     try {
-        const response = await fetch('http://localhost:3001/api/ability', {
+        const response = await fetch('/api/abilities', {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -67,3 +67,21 @@ export const retrieveabilities = async () => {
         return [];
     }
 }
+export const postCreature = async (creature) => {
+    try {
+        const response = await fetch('api/creatures', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(creature),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Creature added:', data);
+    } catch (error) {
+        console.error('Error posting creature:', error);
+    }
+};
