@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../services/authService.js';
 import { useAuth } from '../context/AuthContext.jsx';
+import '../Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -28,38 +29,39 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div>
+      <div>
+        <h2>Welcome To Mystic Makers</h2>
         {error && (
-          <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
+          <div>
             {error}
           </div>
         )}
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2">Email</label>
+          <div className="form">
+            {/* <label className="block mb-2">Email: </label> */}
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="log-in"
               required
+              placeholder='Email'
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2">Password</label>
+          <div className="form">
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="log-in"
               required
+              placeholder='Password'
             />
           </div>
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="form"
           >
             Login
           </button>
