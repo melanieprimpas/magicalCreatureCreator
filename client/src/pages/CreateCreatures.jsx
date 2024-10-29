@@ -4,7 +4,6 @@ import CreatureCard from '../components/CreatureCard';
 import StarRating from '../components/StarRating'; 
 import '../App.css';
 import { retrievehabitats, retrieveCreatures, postCreature, retrieveabilities } from '../utils/dbRouter';
-import '../Login.css';
 
 let habitats = [];
 let urls = [];
