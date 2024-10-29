@@ -35,7 +35,9 @@ const SavedCreatures = () => {
           {savedCreatures.map((creature, index) => (
             
               <CreatureCard
+
                 key={index}
+
                 habitat={creature.habitat}
                 creatureName={creature.creatureName}
                 image={creature.image}
