@@ -22,16 +22,16 @@ const SavedCreatures = () => {
   };
 
   return (
-    <div>
+    <>
       <h2>Saved Creatures</h2>
 
       {/* Check if there are saved creatures */}
       {savedCreatures.length === 0 ? (
         <p>No creatures saved yet.</p>
       ) : (
-        <div className="saved-creatures-grid">
-          {savedCreatures.map((creature, index) => (
-            <div key={index} className="saved-creature-card">
+        <div className="card-container">
+          {savedCreatures.map((creature) => (
+            <>
               {/* Render the CreatureCard */}
               <CreatureCard
                 habitat={creature.habitat}
@@ -42,17 +42,17 @@ const SavedCreatures = () => {
               />
 
               {/* Delete Button */}
-              <button
+              {/* <button
                 className="delete-button"
                 onClick={() => handleDeleteCreature(index)}
               >
                 Delete
-              </button>
-            </div>
+              </button> */}
+            </>
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

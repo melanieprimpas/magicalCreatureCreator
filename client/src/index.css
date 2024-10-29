@@ -22,6 +22,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
 }
 
 a {
@@ -36,17 +37,17 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
-  min-width: 320px;
+  min-width: 520px;
   width: 100%;
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box; 
   background: linear-gradient(135deg, #6e4040, #5a2929); 
+  flex-wrap: wrap;
 }
 
 h1 {
@@ -92,20 +93,6 @@ button:focus-visible {
     background-color: #f9f9f9; 
   }
 }
-
-/* Add card styles */
-.creature-card {
-  background-color: var(--card-bg);
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s; 
-}
-
-.creature-card:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); 
-}
-
 
 @keyframes fadeIn {
   from {
