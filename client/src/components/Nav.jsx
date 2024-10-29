@@ -17,6 +17,9 @@ const Nav = () => {
   if (currentPage === '/login') {
     return null;
   }
+  if (currentPage === '/signup') {
+    return null;
+  }
   return (
     <nav className="nav">
       <li className="nav-item">
@@ -77,9 +80,9 @@ const Nav = () => {
             </li>
             <li className="nav-item">
               <Link
-                to="/register"
+                to="/signup"
                 // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-                className={currentPage === '/register' ? 'nav-link active' : 'nav-link'}
+                className={currentPage === '/signup' ? 'nav-link active' : 'nav-link'}
                 //className={loginButtonStyles}
               >
                 Sign Up
