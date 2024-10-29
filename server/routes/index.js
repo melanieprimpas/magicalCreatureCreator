@@ -33,7 +33,7 @@ import {
   getUserById,
   createUser,
   deleteUser,
-} from '../controllers/userController.js';
+} from '../controllers/UserController.js';
 
 import authRoute from './auth.js';
 
