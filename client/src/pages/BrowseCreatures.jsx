@@ -35,3 +35,4 @@ const BrowseCreatures = () => {
 };
 
 export default BrowseCreatures;
+
