@@ -10,7 +10,7 @@ export const generateStory = async (creatureName, habitat) => {
 
         const data = await response.json();
         if (response.ok) {
-            return data.story; // Return the generated story
+            return data.story; 
         } else {
             throw new Error(data.error);
         }
