@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { logout } from '../services/authService';
+import '../index.css';
 
 const Nav = () => {
   const currentPage = useLocation().pathname;
@@ -55,11 +56,10 @@ const Nav = () => {
         {isAuthenticated ? (
           <li className="nav-item">
             <span className="text-sm font-medium text-gray-600">
-              Welcome, {user?.username || 'User'}
             </span>
             <button
               onClick={handleLogout}
-              //className={logoutButtonStyles}
+              className={"button-style"}
             >
               Logout
             </button>
@@ -73,16 +73,6 @@ const Nav = () => {
                 //className={loginButtonStyles}
               >
                 Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/register"
-                // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-                className={currentPage === '/register' ? 'nav-link active' : 'nav-link'}
-                //className={loginButtonStyles}
-              >
-                Sign Up
               </Link>
             </li>
           </div>
