@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSyncAlt } from 'react-icons/fa';
 import { generateStory } from '../utils/apiRoute';
-import { retrievehabitats} from '../utils/dbRouter';
+import { retrievehabitats, retrieveabilities} from '../utils/dbRouter';
 
 // -------------------------------------------------------------
 // Stars Rendering Function
@@ -19,11 +19,12 @@ const renderStars = (count) => {
 };
 
 
-const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
+const CreatureCard = ({ habitat, creatureName, image = null, nameAbilities, abilities }) => {
   const [flipped, setFlipped] = useState(false);
   const [story, setStory] = useState('');
   const [habitatBackgrounds, setHabitatBackgrounds] = useState({});
   const [habitatsFetched, setHabitatsFetched] = useState(false);
+  //const [nameAbilities, setNameAbilities] = useState(false);
 
 
   const backgroundImage = habitat && habitatBackgrounds[habitat] ? `url(${habitatBackgrounds[habitat]})` : null;
@@ -51,6 +52,21 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
 
     });
   }, []);
+
+/*
+  useEffect(() => {
+    let abilitiesName = [];
+
+    retrieveabilities().then(data => {
+      data.forEach(abilityName => {
+        abilitiesName.push(abilityName.name);
+      });
+
+      //console.log(backgrounds, "line 28");
+      setNameAbilities(abilitiesName);
+
+    });
+  }, []);*/
 
   // -------------------------------------------------------------------
   // Styles
@@ -196,7 +212,7 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
 
           {/* Creature Abilities */}
           <div className="creature-abilities" style={abilitiesStyles}>
-            <h3>Ability:</h3>
+            <h3>Ability: {nameAbilities}</h3>
             <div style={abilityItemStyles}>
               <span>Strength:</span>
               <div>{renderStars(abilities.strength)}</div>
@@ -268,6 +284,7 @@ CreatureCard.propTypes = {
   habitat: PropTypes.string.isRequired,
   creatureName: PropTypes.string.isRequired,
   image: PropTypes.string,
+  nameAbilities: PropTypes.string.isRequired,
   abilities: PropTypes.shape({
     strength: PropTypes.number.isRequired,
     agility: PropTypes.number.isRequired,
