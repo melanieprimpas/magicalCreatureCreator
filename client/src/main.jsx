@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx'
 import './index.css'
+import './login.css'
 
 import BrowseCreatures from './pages/BrowseCreatures.jsx';
 import CreateCreatures from './pages/CreateCreatures.jsx';
