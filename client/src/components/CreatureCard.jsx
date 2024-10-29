@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSyncAlt } from 'react-icons/fa';
 import { generateStory } from '../utils/apiRoute';
-import { retrievehabitats, retrieveCreatures } from '../utils/dbRouter';
+import { retrievehabitats} from '../utils/dbRouter';
 
-// star rating function
+// -------------------------------------------------------------
+// Stars Rendering Function
+// -------------------------------------------------------------
+
 const renderStars = (count) => {
   const stars = [];
   for (let i = 0; i < count; i++) {
@@ -49,7 +52,10 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
     });
   }, []);
 
-  // Container for both sides of the card
+  // -------------------------------------------------------------------
+  // Styles
+  // -------------------------------------------------------------------
+
   const cardContainerStyles = {
     width: '100%',
     maxWidth: '275px',
@@ -59,8 +65,6 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    
-  
   };
 
   const cardStyles = {
@@ -70,7 +74,6 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
     transformStyle: 'preserve-3d',
     transition: 'transform 0.8s',
     transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-    
     
   };
 
@@ -193,7 +196,7 @@ const CreatureCard = ({ habitat, creatureName, image = null, abilities }) => {
 
           {/* Creature Abilities */}
           <div className="creature-abilities" style={abilitiesStyles}>
-            <h3>Abilities</h3>
+            <h3>Ability:</h3>
             <div style={abilityItemStyles}>
               <span>Strength:</span>
               <div>{renderStars(abilities.strength)}</div>
@@ -271,10 +274,6 @@ CreatureCard.propTypes = {
   }).isRequired,
   story: PropTypes.string,
 };
-/*
-CreatureCard.defaultProps = {
-  image: null,
-  //story: '', 
-};*/
+
 
 export default CreatureCard;

@@ -34,8 +34,8 @@ const Nav = () => {
         <>
           <li className="nav-item">
             <Link
+
               to="/SavedCreatures"
-              // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
               className={currentPage === '/SavedCreatures' ? 'nav-link active' : 'nav-link'}
             >
               Saved Creatures
@@ -44,7 +44,6 @@ const Nav = () => {
           <li className="nav-item">
             <Link
               to="/CreateCreatures"
-              // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
               className={currentPage === '/CreateCreatures' ? 'nav-link active' : 'nav-link'}
             >
               Create a Creature

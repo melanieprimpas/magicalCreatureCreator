@@ -9,6 +9,11 @@ let habitats = [];
 let urls = [];
 
 
+
+// --------------------------------------------------------------------
+// Fetch habitats from the database and populate habitats array
+// --------------------------------------------------------------------
+
 retrievehabitats().then(data => {
      data.forEach(habitat => {
         habitats.push(habitat.name);
@@ -16,6 +21,23 @@ retrievehabitats().then(data => {
     });
 });
 
+
+let abilitiesName = [];
+
+// -----------------------------------------------------------------------
+// Fetch abilities from the database and populate abilitiesName array
+// -----------------------------------------------------------------------
+
+retrieveabilities().then(data => {
+  data.forEach(abilityName => {
+    abilitiesName.push(abilityName.name);
+  });
+});
+
+
+// -----------------------------------------------------------------------
+// CreateCreatures Component
+// -----------------------------------------------------------------------
 
 const CreateCreatures = () => {
   const [habitat, setHabitat] = useState('');
@@ -27,8 +49,9 @@ const CreateCreatures = () => {
     agility: 0,
     intelligence: 0,
   });
-  const [isSaved, setIsSaved] = useState(false);
 
+  const [selectedAbility, setSelectedAbility] = useState(''); 
+  const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
   // Handle habitat selection change
@@ -36,20 +59,31 @@ const CreateCreatures = () => {
     const selectedHabitat = event.target.value;
     const index = habitats.indexOf(selectedHabitat);
     setHabitat(selectedHabitat);
-    setHabitatUrl(urls[index]); // Set the corresponding habitat URL
+    setHabitatUrl(urls[index]); 
   };
 
   const handleAbilityChange = (ability, value) => {
     setAbilities({ ...abilities, [ability]: value });
   };
 
+
+  //-----------------------------------------------------------------------
+  // handleSaveCreature Function
+  //-----------------------------------------------------------------------
+
+  const handleSaveCreature = () => {
+
   // Handle save button click and update the saved status
   const handleSaveCreature = async (e) => {
+
     const creatureData = {
       habitat,
       creatureName,
-      image: imageUrl, // Updated to save the URL
+      image: imageUrl, 
       abilities,
+      additionalAbility: selectedAbility 
+
+
     };
     const creature = {
       name: creatureName,
@@ -63,25 +97,40 @@ const CreateCreatures = () => {
       agility: abilities.agility
     }
 
-    // Retrieve any existing creatures from localStorage
+  // -----------------------------------------------------------------------
+  // Retrieve any existing creatures from localStorage
+  // -----------------------------------------------------------------------
+
     const savedCreatures = JSON.parse(localStorage.getItem('creatures')) || [];
     
+
+    //-----------------------------------------------------------------------
     // Add the new creature to the saved creatures
+    //-----------------------------------------------------------------------
+
     const updatedCreatures = [...savedCreatures, creatureData];
 
+    //-----------------------------------------------------------------------
     // Save the updated creatures array to localStorage
-    localStorage.setItem('creatures', JSON.stringify(updatedCreatures));
+    //-----------------------------------------------------------------------
 
+
+    localStorage.setItem('creatures', JSON.stringify(updatedCreatures));
     // Call the function to post data to the backend
     await postCreature(creature);
-
     console.log('Creature saved:', creature);
 
+
+    //-----------------------------------------------------------------------
     // Set the "Saved" state to true
+    //-----------------------------------------------------------------------
+
     setIsSaved(true);
   };
 
+  //-----------------------------------------------------------------------
   // Handle clearing the form to create a new creature
+  //-----------------------------------------------------------------------
   const handleNewCreature = () => {
     // Reset the form and card states
     setHabitat('');
@@ -146,7 +195,6 @@ const CreateCreatures = () => {
 
         {/* Abilities Input */}
         <div className="abilities-input">
-          <h3>Abilities</h3>
           {Object.keys(abilities).map((ability) => (
             <StarRating
               key={ability}
@@ -187,6 +235,7 @@ const CreateCreatures = () => {
         creatureName={creatureName}
         image={imageUrl} // Pass the URL directly to CreatureCard
         abilities={abilities}
+        additionalAbility={selectedAbility} 
       />
     </div>
   );
