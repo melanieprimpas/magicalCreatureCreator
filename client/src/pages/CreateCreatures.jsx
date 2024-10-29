@@ -150,8 +150,6 @@ const CreateCreatures = () => {
     <div className="app-container">
       <div className="form-section">
         <h2>Create Your Creature</h2>
-        
-  
         <div className="input-group">
           <label htmlFor="habitat">Select Habitat:</label>
           <select 
@@ -170,7 +168,7 @@ const CreateCreatures = () => {
         </div>
 
        <div className="input-group">
-          <label htmlFor="nameAbilities">Select Ability:</label>
+          <label htmlFor="nameAbilities">Select Ability:   </label>
           <select 
             id="nameAbilities" 
             value={nameAbilities} 
@@ -191,7 +189,7 @@ const CreateCreatures = () => {
           <input
             type="text"
             id="name"
-            placeholder="Enter creature name"
+        
             value={creatureName}
             onChange={(e) => setCreatureName(e.target.value)}
             className="input-text"
@@ -200,13 +198,12 @@ const CreateCreatures = () => {
 
         
         <div className="input-group">
-          <label htmlFor="image-url">Creature Image URL:</label>
+          <label htmlFor="image-url">Creature URL:</label>
           <input 
             type="text" 
             id="image-url" 
-            placeholder="Enter image URL" 
             value={imageUrl} 
-            onChange={(e) => setImageUrl(e.target.value)} // Updated to handle URL input
+            onChange={(e) => setImageUrl(e.target.value)}
             className="input-text"
           />
         </div>
