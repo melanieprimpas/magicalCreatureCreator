@@ -152,31 +152,19 @@ h2 {
   background-color: darkred;
 }
 
-
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-}
-
-.login-button {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
-
 .creature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
 }
+
+.creature-grid > div {
+  flex: 1 1 275px; 
+  max-width: 275px; 
+}
+
+
 
 
