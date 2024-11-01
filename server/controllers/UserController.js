@@ -29,8 +29,9 @@ export const getUserById = async (req, res) => {
 export const createUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ username, email, password: hashedPassword });
+    console.log(password, 'password create')
+    //const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({ username, email, password });
     const token = generateToken(newUser);
     res.status(201).json({ token });
   } catch (error) {

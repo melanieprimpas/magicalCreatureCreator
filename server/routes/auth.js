@@ -11,9 +11,12 @@ router.post('/login', async (req, res) => {
     console.log('Login request:', req.body);
     const { email, password } = req.body;
     console.log(email, password);
-    const user = await User.findOne({ where: { email } });
-    
-    if (!user || !(await user.validPassword(password))) {
+    const user = await User.findOne({ where: { email: email} });
+    console.log('made it')
+    console.log(user)
+    const validatedPassword = await user.validPassword(password)
+    console.log(validatedPassword)
+    if (!user || !validatedPassword) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     
