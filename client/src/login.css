@@ -23,7 +23,7 @@ border-right: none;
   height: 100%;
 }
 
-.button {
+button {
   color: white;
   font-size: 1rem;
   font-weight: 500;
@@ -31,6 +31,8 @@ border-right: none;
   padding: 20px 16px 6px;
   height: 56px;
   margin-top: 20px;
+  background-color: transparent;
+  
 }
 
 h2 {

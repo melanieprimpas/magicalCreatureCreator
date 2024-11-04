@@ -34,51 +34,51 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up Here !</h2>
+    <div>
+      <div>
+        <h2>Sign Up Here!</h2>
         {error && (
-          <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
+          <div>
             {error}
           </div>
         )}
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2">Name</label>
+          <div className="form">
             <input
               type="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="log-in"
               required
+              placeholder='Name'
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2">Email</label>
+          <div className="form">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="log-in"
               required
+              placeholder='Email'
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2">Password</label>
+          <div className="form">
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="log-in"
               required
+              placeholder='Password'
             />
-          </div>
+          
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="log-in"
           >
             Sign Up
-          </button>
+          </button></div>
         </form>
       </div>
     </div>

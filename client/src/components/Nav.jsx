@@ -62,7 +62,7 @@ const Nav = () => {
             </span>
             <button
               onClick={handleLogout}
-              className={"button-style"}
+              className={"log-in"}
             >
               Logout
             </button>
