@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../services/authService.js';
 import { useAuth } from '../context/AuthContext.jsx';
+//import '../login.css'
 
 
 const Login = () => {
@@ -58,13 +59,13 @@ const Login = () => {
               required
               placeholder='Password'
             />
-          </div>
+          
           <button
             type="submit"
-            className="form"
+            className="log-in"
           >
             Login
-          </button>
+          </button></div>
         </form>
       </div>
     </div>
