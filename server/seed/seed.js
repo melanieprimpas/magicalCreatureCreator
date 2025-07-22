@@ -10,19 +10,19 @@ const seedDatabase = async () => {
 
     // Seed data for habitats
     const habitats = await Habitat.bulkCreate([
-      { name: 'Forest', description: 'A dense forest with tall trees.', habitat_url:'https://magicalcreatures.brightsfw.com/rainforest.jpeg' },
-      { name: 'Desert', description: 'A hot and dry desert.', habitat_url:'https://magicalcreatures.brightsfw.com/desert.png' },
-      { name: 'Mountain', description: 'A tall and rocky mountain.', habitat_url:'https://magicalcreatures.brightsfw.com/mountain.png' },
-      { name: 'Cave', description: 'A dark and damp cave.', habitat_url:'https://magicalcreatures.brightsfw.com/cave.jpg' },
-      { name: 'Grassland', description: 'A wide and open grassland.', habitat_url:'https://magicalcreatures.brightsfw.com/grassland.jpg' },
-      { name: 'Swamp', description: 'A wet and muddy swamp.', habitat_url:'https://magicalcreatures.brightsfw.com/swamp.jpg' },
-      { name: 'Tundra', description: 'A cold and icy tundra.', habitat_url:'https://magicalcreatures.brightsfw.com/tundra.jpg' },
-      { name: 'Volcano', description: 'A fiery and dangerous volcano.', habitat_url:'https://magicalcreatures.brightsfw.com/volcano.jpg' },
-      { name: 'Island', description: 'A small and isolated island.', habitat_url:'https://magicalcreatures.brightsfw.com/island.jpg' },
-      { name: 'Jungle', description: 'A lush and tropical jungle.', habitat_url:'https://magicalcreatures.brightsfw.com/jungle.jpg' },
-      { name: 'Savannah', description: 'A dry and grassy savannah.', habitat_url:'https://magicalcreatures.brightsfw.com/savannah.jpg' },
-      { name: 'Underwater', description: 'A mysterious and dark underwater world.', habitat_url:'https://magicalcreatures.brightsfw.com/underwater.jpg' },
-      { name: 'Sky', description: 'A high and open sky.', habitat_url:'https://magicalcreatures.brightsfw.com/sky.jpg' },
+      { name: 'Forest', description: 'A dense forest with tall trees.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/8/87/Chiapas_Rainforest_crop.jpg'},
+      { name: 'Desert', description: 'A hot and dry desert.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Rub_al_Khali_002.JPG/1024px-Rub_al_Khali_002.JPG' },
+      { name: 'Mountain', description: 'A tall and rocky mountain.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/f/f0/Willow_Flats_area_and_Teton_Range_in_Grand_Teton_National_Park.jpg' },
+      { name: 'Cave', description: 'A dark and damp cave.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/5/51/Son_Doong_Cave_5.jpg' },
+      { name: 'Grassland', description: 'A wide and open grassland.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Nachusa_Grasslands_Spring_2016.jpg/800px-Nachusa_Grasslands_Spring_2016.jpg' },
+      { name: 'Swamp', description: 'A wet and muddy swamp.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Cypresses.jpg/800px-Cypresses.jpg' },
+      { name: 'Tundra', description: 'A cold and icy tundra.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Tundra_in_Siberia.jpg/800px-Tundra_in_Siberia.jpg' },
+      { name: 'Volcano', description: 'A fiery and dangerous volcano.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/4/48/Augustine_volcano_Jan_24_2006_-_Cyrus_Read.jpg' },
+      { name: 'Island', description: 'A small and isolated island.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Na_Pali_Coast%2C_Kauai%2C_Hawaii.jpg/800px-Na_Pali_Coast%2C_Kauai%2C_Hawaii.jpg' },
+      { name: 'Jungle', description: 'A lush and tropical jungle.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Tioman_Rainforest.JPG/800px-Tioman_Rainforest.JPG' },
+      { name: 'Savannah', description: 'A dry and grassy savannah.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/5/5a/Tarangire-Natpark800600.jpg' },
+      { name: 'Underwater', description: 'A mysterious and dark underwater world.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/a/a4/Great_Barrier_Reef_snorkeling_18.jpg' },
+      { name: 'Sky', description: 'A high and open sky.', habitat_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Blue_Sky%2C_Dhaka%2C_Bangladesh.jpg/800px-Blue_Sky%2C_Dhaka%2C_Bangladesh.jpg' },
     ]);
 
     // Seed data for abilities
@@ -52,11 +52,11 @@ const seedDatabase = async () => {
 
     // Seed data for creatures
     const creatures = await Creature.bulkCreate([
-      { name: 'Dragon', description: 'A large and powerful winged reptile.', image_url: 'https://magicalcreatures.brightsfw.com/dragon.jpg', habitats_name: habitats[0].name, habitat_image: habitats[0].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
-      { name: 'Phoenix', description: 'A mythical bird that regenerates from its ashes.', image_url: 'https://magicalcreatures.brightsfw.com/phoenix.jpg', habitats_name: habitats[1].name, habitat_image: habitats[1].habitat_url, abilities_name: abilities[1].name, strength: 3, intelligence: 5, agility: 4 },
-      { name: 'Mermaid', description: 'A creature with the upper body of a human and the tail of a fish.', image_url: 'https://magicalcreatures.brightsfw.com/mermaid.jpg', habitats_name: habitats[2].name, habitat_image: habitats[2].habitat_url, abilities_name: abilities[0].name, strength: 3, intelligence: 3, agility: 5 },
-      { name: 'Unicorn', description: 'A magical horse with a single horn on its forehead.', image_url: 'https://magicalcreatures.brightsfw.com/unicorn.png', habitats_name: habitats[3].name, habitat_image: habitats[3].habitat_url, abilities_name: abilities[6].name, strength: 2, intelligence: 4, agility: 5 },
-      { name: 'Griffin', description: 'A legendary creature with the body of a lion and the head and wings of an eagle.', image_url: 'https://magicalcreatures.brightsfw.com/griffin.jpg', habitats_name: habitats[4].name, habitat_image: habitats[4].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
+      { name: 'Dragon', description: 'A large and powerful winged reptile.', image_url: 'https://i.imgur.com/hUAlJsm.jpeg', habitats_name: habitats[0].name, habitat_image: habitats[0].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
+      { name: 'Phoenix', description: 'A mythical bird that regenerates from its ashes.', image_url: 'https://i.imgur.com/E1VX9Bn.jpeg', habitats_name: habitats[1].name, habitat_image: habitats[1].habitat_url, abilities_name: abilities[1].name, strength: 3, intelligence: 5, agility: 4 },
+      { name: 'Mermaid', description: 'A creature with the upper body of a human and the tail of a fish.', image_url: 'https://i.imgur.com/8sIl8vR.jpeg', habitats_name: habitats[11].name, habitat_image: habitats[11].habitat_url, abilities_name: abilities[0].name, strength: 3, intelligence: 3, agility: 5 },
+      { name: 'Unicorn', description: 'A magical horse with a single horn on its forehead.', image_url: 'https://i.imgur.com/XBnUSkY.jpeg', habitats_name: habitats[12].name, habitat_image: habitats[12].habitat_url, abilities_name: abilities[6].name, strength: 2, intelligence: 4, agility: 5 },
+      { name: 'Griffin', description: 'A legendary creature with the body of a lion and the head and wings of an eagle.', image_url: 'https://i.imgur.com/AkOgTg1.jpeg', habitats_name: habitats[4].name, habitat_image: habitats[4].habitat_url, abilities_name: abilities[2].name, strength: 5, intelligence: 4, agility: 3 },
     ]);
 
     // Seed data for users
